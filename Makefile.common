@@ -1,0 +1,29 @@
+CFLAGS =
+LDFLAGS =
+
+WARNINGOPTS += -Wall -Wextra \
+               -Wno-ctor-dtor-privacy -Wnon-virtual-dtor \
+               -Wno-ignored-qualifiers \
+               -Wreorder \
+               -Wold-style-cast -Wsign-promo \
+               -Woverloaded-virtual -Wfloat-equal -Wpointer-arith -Wcast-qual \
+               -Wcast-align -Wwrite-strings \
+               -Wdisabled-optimization \
+               -Werror \
+               -Wpointer-arith \
+               -Wcast-qual -Wsign-compare \
+               -Wmissing-field-initializers \
+               -Winvalid-pch -Wstrict-null-sentinel \
+	       -Winit-self \
+	       -Wunused-parameter -Waddress \
+#              -Wundef: errors in "CLI11.hpp"
+#              -Wswitch-default: warns even when all cases are handled
+#              -Wconversion: warns for s8+=s8
+#              -Wswitch-enum: warns even when there is a default case
+#              -Wunsafe-loop-optimizations -Wnormalized=nfc : only g++>=4.1
+#              -W \ : same as '-Wextra' but obsolete
+#              -Winline \ : a lot of uninlinable code
+#              -Wunreachable-code \ : wrong warning with string::find
+#              -Wredundant-decls \ : warns if friend and extern declaration
+
+COMMONLIBRARIES=

@@ -1,0 +1,81 @@
+* now, a qualitative step, taking chess variants as an example or study case:
+
+    [ FIXME: everything may be outdated with respect to "chess_new.cpp" ]
+
+    * "Color" as defined in "board.h"
+
+    * no basic "Square"; instead, abstract squares (u8) and pieces (u8)
+
+    * struct BasicData {
+        template <typename.. SquaresA>
+        BasicData(SquaresA &&...squares_a)
+          : squares(squares_a...) { }
+
+        DataSpec<Kind::state> state_spec;
+        DataSpec<Kind::manag> manag_spec;
+        DataSpec<Kind::cache> cache_spec;
+        DataSpec<Kind::table> table_spec;
+
+        // tables for conversion: square to piece and square to colour
+        Addressing<Kind::table, Straight<u8>, u8> const
+          pieces{table_spec, n_u8};
+        Addressing<Kind::table, Straight<u8>, Color> const
+          color{table_spec, n_u8};
+
+        Addressing<Kind::state, SingleVar, Color> const turn{state_spec};
+        Addressing<Kind::state, Straight2D<>, u8> const squares;
+      };
+
+    * using generate_moves_f=
+        function<void (Moves &, BasicData const &, Board const &)>;
+      using apply_move_f=
+        function<void (Board &, BasicData const &, Move const &)>;
+      using generate_move_from_f=
+        function<void (Moves &, BasicData const &, Board const &,
+                       Location, u8 square, u8 piece, Color)>;
+
+    * class EnPassantRule {
+      public:
+        template <typename Data>
+        EnPassantRule(Data &data, u8 pawn_piece)
+          : pawn_piece(pawn_piece),
+            en_passant(data.state_spec),
+            en_passant_jumped(data.state_spec),
+            en_passant_ended(data.state_spec) { }
+        u8 const pawn_piece;
+        Addressing<Kind::state, SingleVar, bool> const> const en_passant;
+        Addressing<Kind::state, SingleVar, Location> const> const
+          en_passant_jumped, en_passant_ended;
+        void generate_move_from(Moves &, BasicData const &, Board const &,
+                                Location, u8 square, u8 piece, Color) const;
+        void apply_move(Board &, BasicData const &, Move const &) const;
+      };
+
+    * the general algorithm is
+
+        Board   |--> sequence of move filters --> moves
+        Moves() |
+
+        Board   |--> sequence of outcome filters --> outcome
+        playing |
+
+        move stream |--> sequence of code-specific move stream filters --> board
+        Board       |
+
+      among the sequence of move filters, there is a special one, that scans
+      the board and dispatches based on the value of each square; for each
+      square, there is a sequence of square-specific move filters
+
+      signatures (the "Data" argument must be in the function closure):
+
+        move filter:
+            void (Moves &, Board)
+
+        square-specific move filter:
+            void (Moves &, Board, Location, Square)
+
+        outcome filter:
+            void (Outcome &, Board)
+
+        move stream filter:
+            void (Board &, ...)

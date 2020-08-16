@@ -1,0 +1,36 @@
+#!/bin/bash
+
+colorlist=(white black gray)
+singlelist=(square)
+
+workdir=$1
+rm -rf $workdir
+mkdir $workdir
+
+for color in ${colorlist[@]}; do
+    cat drawings.tex | ./genspectex piece $color > $workdir/$color.tex
+    cp $color.settings $workdir
+done
+
+for single in ${singlelist[@]}; do
+    cat drawings.tex | ./genspectex $single $single > $workdir/$single.tex
+    cp $single.settings $workdir
+done
+
+(
+    cd $workdir
+
+    svglist=$(sed -n 's/.*\\tikzsetnextfilename{\(.*\)}.*/\1/p' \
+                  ${colorlist[@]/%/.tex} ${singlelist[@]/%/.tex})
+
+    for name in ${colorlist[@]} ${singlelist[@]}; do
+        rubber --unsafe -d $name
+    done
+
+    for drawing in $svglist; do
+        pdf2svg $drawing.pdf $drawing.svg
+        sed -i 's/^<g id=".*">$/<g id="'$drawing'">/' $drawing.svg
+    done
+)
+
+

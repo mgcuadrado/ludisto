@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10pt" height="10pt" viewBox="0 0 10 10" version="1.1">
+<g id="white-small-stone">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(100%,98.724365%,75%);fill-opacity:1;" d="M 8 5 C 8 3.34375 6.65625 2 5 2 C 3.34375 2 2 3.34375 2 5 C 2 6.65625 3.34375 8 5 8 C 6.65625 8 8 6.65625 8 5 Z M 8 5 "/>
+<path style="fill:none;stroke-width:0.49814;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(100%,100%,100%);stroke-opacity:1;stroke-miterlimit:10;" d="M 5 2 C 6.65625 2.085938 7.925781 3.5 7.839844 5.152344 C 7.757812 6.6875 6.53125 7.910156 5 7.992188 " transform="matrix(1,0,0,-1,0,10)"/>
+<path style="fill:none;stroke-width:0.49814;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 8 5 C 8 6.65625 6.65625 8 5 8 C 3.34375 8 2 6.65625 2 5 C 2 3.34375 3.34375 2 5 2 C 6.65625 2 8 3.34375 8 5 Z M 8 5 " transform="matrix(1,0,0,-1,0,10)"/>
+</g>
+</svg>

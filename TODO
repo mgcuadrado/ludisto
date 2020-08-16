@@ -1,0 +1,141 @@
+programming
+
+* bug: can't undo after the game ends
+
+* consider: different evaluation functions may need different cache information
+
+* what about neutral pieces?
+
+* implement Zobrist hashing?
+
+* code a ring to measure two players against each other multiple times
+
+* code an automatic draughts test, then do the "no_legal_moves()" for draughts
+
+* check for attribution of piece definitions in "share/"
+
+   https://github.com/niklasf/python-chess/blob/master/chess/svg.py
+
+consider or research
+
+* check how big the transposition table becomes, and how to prune it
+
+links
+
+* chess-specific and general info
+
+   https://www.chessprogramming.org
+
+* interesting info about game programming
+
+   http://satirist.org/learn-game/
+
+* fonts with fairy pieces:
+
+   http://www.enpassant.dk/chess/fonteng.htm
+
+* Parlett's & Betza's notations for fairy pieces, and catalog of named pieces:
+
+   https://en.wikipedia.org/wiki/Fairy_chess_piece
+
+* generic piece creation system (with estimation of value of pieces):
+
+   https://www.chessvariants.com/unequal.dir/genericchesssystem.html
+
+* Monte Carlo tree search:
+
+   "en.wikipedia.org/wiki/Monte_Carlo_tree_search"
+
+   i made some quick tests and turns out non-draw outcomes by fully random move
+   selection is not at all as rare as i thought; but i think it may be a good
+   idea to code a win-in-one heuristics into the Monte Carlo algorithm
+
+   see "www.ke.tu-darmstadt.de/lehre/arbeiten/bachelor/2012/Arenz_Oleg.pdf"
+   (also in "docs/")
+
+   "www.chessprogramming.org/Jakob_Erdmann" has a poster explaining Monte Carlo
+   in games (see "docs/Uct-poster-erdmann.png"); the turn-based two-player game
+   with dice described in "www.chessprogramming.org/EinStein_würfelt_nicht!" is
+   a good test candidate for Monte Carlo search; this poster references the
+   next pointer
+
+   "http://www.ideanest.com/vegos/MonteCarloGo.pdf" applies Monte Carlo and
+   simulated annealing to Go (also in "docs/")
+
+   "https://link.springer.com/content/pdf/10.1007%2F978-0-387-35706-5_11.pdf"
+   applies Monte Carlo to Go (in "docs/", as
+   "Bouzy-Helmstetter2004_Chapter_Monte-CarloGoDevelopments.pdf")
+
+   "http://ggp.stanford.edu/readings/uct.pdf" is the paper that described "UCT"
+   (also in "docs/")
+
+   "http://mcts.ai"
+
+* "commons.wikimedia.org/wiki/Category:SVG_chess_pieces"
+
+* SVG drawings for some game-related unicode glyphs:
+
+   http://sourgift.com/unicode-glyphs
+
+ideas:
+
+* évaluation floue: voici une idée un peu loufoque pour évaluer une position:
+  transformer les règles du jeu, qui sont "discrètes" (il y a un nombre fini
+  d'états possibles), en des règles "continues" de la manière suivante: l'état
+  actuel est une superposition d'états discrets, chacun avec une probabilité;
+  au départ, la position à évaluer a une probabilité de 1, et toutes les autres
+  positions possibles ont une probabilité de 0; por passer d'un état au
+  suivant, on joue tous les mouvements possibles à partir de toutes les
+  positions discrètes qui font partie de la superposition de l'état actuel;
+  chaque mouvement possible reçoit par example la même probabilité, de sorte
+  que l'état suivant est une superposition de toutes les positions discrètes
+  qu'on peut atteindre à partir de toutes les positions discrètes qui
+  participent à la superposition actuelle, en donnant à tous les mouvements
+  possibles à partir d'une position discrète donnée la même probabilité; bien
+  entendu, si on fait tout ça, c'est équivalent à une évaluation classique
+  minimax, ou en plus on garde le registre des probabilités (qui ne servent à
+  rien en plus) et on perd justement les conceptn de maximisation et
+  minimisation, sans lesquels le minimax ne sert à rien; pour faire ceci
+  beaucoup plus performant, et j'espère intéressant, mais en y perdant beaucoup
+  de rigueur et précision, on "résume" les superpositions; par example, un état
+  donné n'est plus une superposition d'un ensemble de positions discrètes, mais
+  plutôt une superposition de pièces par case; on aura donc que la case A1
+  contient 75% de tour blanche, 10% de fou blanc, 10% de vide et 5% de roi
+  blanc, et que la case E4 contient 40% de vide, 45% de pion blanc, 10% de pion
+  noir et 5% de cheval noir; on peut faire le résumé d'un autre point de vue;
+  par exemple, on peut dire que l'état est une superposition des positions
+  d'une pièce, et on aura alors que le cheval de reine blanc est à 40% sur B1,
+  45% sur C3 et 15% capturé; ou alternativement, on peut traiter les deux
+  chevaux comme s'ils n'étaient pas distincts; les victoires, c'est aussi une
+  variable continue, et on aura donc, si on évalue la position de départ, la
+  victoire blanche à 0% et la noire aussi, mais dès le quatrième mouvement (ou
+  même plus tôt si le procédé de résumé des superpositions génère suffisamment
+  d'inexactitudes), la victoire noire augmentera un tantinet de rien grâce au
+  mat de l'imbécile; on a donc un système par lequel, en un temps constant, on
+  approfondi l'analyse d'un cran de plus, au grave détriment de la précision;
+  au bout d'un certain nombre de mouvements flous, on peut analyser le résultat
+  avec une fonction simple; je sais pas si ça peut donner quelque chose de
+  positif; c'est probablement une idée complètement inutile
+
+done:
+
+* implement Michniewski
+
+* randomness
+
+   a hash of the id is passed to the evaluation function, which uses it and a
+   salt fixed at the beginning of the game to generate a random increment added
+   to the value of the position
+
+* implement quiescence search
+
+   i implemented what i hope is somewhat in the same direction: boldness (see
+   "note.txt")
+
+* implement threefold repetition rule
+
+* code undo functionality for interactive playing
+
+* switch to "-Ofast"
+
+* code interactive "quit"

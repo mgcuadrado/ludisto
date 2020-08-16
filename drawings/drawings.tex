@@ -1,0 +1,476 @@
+
+% rubber: shell_escape
+% compile with rubber --force --unsafe -d $<
+\documentclass[a4paper, landscape]{memoir}
+\usepackage[landscape, pdftex]{geometry}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\setulmarginsandblock{2cm}{2cm}{*}
+\setlrmarginsandblock{2cm}{2cm}{*}
+\checkandfixthelayout
+
+\input{test.settings}
+
+\tikzset{fill piece/.style={every path/.style={fill=piece color}}}
+\tikzset{draw outline/.style={every path/.style={draw}}}
+
+\tikzset{
+  minor base/.pic={
+    \begin{scope}[minor base outline/.pic={
+      \path
+        (60,25) arc[x radius=10, y radius=2, start angle=0, end angle=180]
+        (40,25) .. controls +(-5,0) and +(0,5) ..
+        (30,15) arc[x radius=20, y radius=4, start angle=-180, end angle=0] --
+        (70,15) .. controls +(0,5) and +(5,0) ..
+        (60,25);
+      }]
+      \pic[fill piece] {minor base outline};
+      \draw[highlight color]
+        (67,15) .. controls +(0,5) and +(1,0) ..
+        (60,23) .. controls +(-5,0) and +(5,-1) ..
+        (50,23);
+      \pic[draw outline] {minor base outline};
+    \end{scope}
+  },
+  major base/.pic={
+    \begin{scope}[major base outline/.pic={
+      \path
+        (70,25) arc[x radius=20, y radius=2, start angle=0, end angle=180]
+        (30,25) .. controls +(-5,0) and +(0,5) ..
+        (20,15) arc[x radius=30, y radius=4, start angle=-180, end angle=0] --
+        (80,15) .. controls +(0,5) and +(5,0) ..
+        (70,25);
+      }]
+      \pic[fill piece] {major base outline};
+      \draw[highlight color]
+        (77,15) .. controls +(0,5) and +(1,0) ..
+        (70,23) .. controls +(-5,0) and +(10,-1) ..
+        (50,23);
+      \pic[draw outline] {major base outline};
+    \end{scope}
+  }
+}
+
+\newcommand*\bb{\path[use as bounding box] (0,0) rectangle (100,100);}
+\newcommand*\grid{\draw[step=10, very thin, opacity=.2] (0,0) grid (100,100);}
+
+\begin{document}
+
+
+\definecolor{light-square-color}{rgb}{1,.8,.6}
+\definecolor{dark-square-color}{rgb}{.8,.5,.3}
+\definecolor{whitish-square-color}{rgb}{.9,.9,.9}
+\definecolor{bluish-square-color}{rgb}{.5,.5,.9}
+\definecolor{reddish-square-color}{rgb}{.9,.4,.4}
+
+\begin{drawing}{light-square}
+  \fill[light-square-color] (0,0) rectangle (100,100);
+\end{drawing}
+~
+\begin{drawing}{dark-square}
+  \fill[dark-square-color] (0,0) rectangle (100,100);
+\end{drawing}
+~
+\begin{drawing}{whitish-square}
+  \fill[whitish-square-color] (0,0) rectangle (100,100);
+\end{drawing}
+~
+\begin{drawing}{bluish-square}
+  \fill[bluish-square-color] (0,0) rectangle (100,100);
+\end{drawing}
+~
+\begin{drawing}{reddish-square}
+  \fill[reddish-square-color] (0,0) rectangle (100,100);
+\end{drawing}
+
+~
+
+\begin{drawing}{piece-d-man}
+  \draw[fill=shadow color]
+    (15,50) --
+    (15,30) arc[x radius=35, y radius=15, start angle=-180, end angle=0]
+    (85,30) --
+    (85,50) -- (15,50);
+  \draw[fill=piece color] (50,50) circle[x radius=35, y radius=15];
+\end{drawing}
+~
+\begin{drawing}{piece-d-king}
+  \draw[fill=shadow color]
+    (15,70) --
+    (15,30) arc[x radius=35, y radius=15, start angle=-180, end angle=0]
+    (85,30) --
+    (85,70) -- (15,70);
+  \draw
+    (15,50) arc[x radius=35, y radius=15, start angle=-180, end angle=0];
+  \draw[fill=piece color] (50,70) circle[x radius=35, y radius=15];
+\end{drawing}
+~
+\begin{drawing}{piece-stone}
+  \begin{scope}[stone/.pic={
+    \path (50,50) circle(38);
+    }]
+    \pic[fill piece] {stone};
+    \draw[highlight color] (50,12) arc(-87:87:38);
+    \pic[draw outline] {stone};
+  \end{scope}
+\end{drawing}
+~
+\begin{drawing}{piece-small-stone}
+  \begin{scope}[stone/.pic={
+    \path (50,50) circle(30);
+    }]
+    \pic[fill piece] {stone};
+    \draw[highlight color] (50,20) arc(-87:87:30);
+    \pic[draw outline] {stone};
+  \end{scope}
+\end{drawing}
+
+~
+
+\begin{drawing}{piece-pawn}
+  \pic {minor base};
+  \begin{scope}[pawn stem/.pic={
+    \path
+      (45,51) .. controls +(1,-15) and +(5,5) ..
+      (40,25) arc[x radius=10, y radius=2, start angle=-180, end angle=0]
+      (60,25) .. controls +(-5,5) and +(-1,-15) ..
+      (55,51) -- (45,51);
+    }]
+    \pic[fill piece] {pawn stem};
+    \draw[highlight color]
+      (59,25) .. controls +(-5,5) and +(-1,-15) ..
+      (54,51);
+    \pic[draw outline] {pawn stem};
+  \end{scope}
+  \fill[piece color] (50,60) circle(10);
+  \draw[highlight color] (50,70) arc(80:-80:10);
+  \draw (50,60) circle(10);
+\end{drawing}
+~%
+\tikzset{
+  bishop stem/.pic={
+  \begin{scope}[bishop stem outline/.pic={
+    \path
+      (50,55) --
+      (42,55) .. controls +(1,-5) and +(12,15) ..
+      (30,25) arc[x radius=20, y radius=2, start angle=-180, end angle=0]
+      (70,25) .. controls +(-12,15) and +(-1,-5) ..
+      (58,55) -- (50,55);
+    }]
+    \pic[fill piece] {bishop stem outline};
+    \draw[highlight color]
+      (69,25) .. controls +(-12,15) and +(-1,-5) ..
+      (57,55);
+    \pic[draw outline] {bishop stem outline};
+  \end{scope}
+  }
+}%
+\begin{drawing}{piece-bishop}
+  \pic {major base};
+  \pic {bishop stem};
+  \begin{scope}[bishop outline/.pic={
+    \path
+      (50,82) .. controls +(-5,-5) and +(0,5) ..
+      (35,65) .. controls +(0,-5) and +(-5,5) ..
+      (40,55) .. controls +(3,-3) and +(-3,0) ..
+      (50,51) .. controls +(3,0) and +(-3,-3) ..
+      (60,55) .. controls +(5,5) and +(0,-5) ..
+      (65,65) .. controls +(0,5) and +(5,-5) ..
+      (50,82);
+    }]
+    \pic[fill piece] {bishop outline};
+    \draw[highlight color]
+      (50,51) .. controls +(3,0) and +(-3,-3) ..
+      (58,55) .. controls +(5,5) and +(0,-5) ..
+      (63,65) .. controls +(0,5) and +(5,-5) ..
+      (50,82);
+    \pic[draw outline] {bishop outline};
+  \end{scope}
+  \draw[contrast color] (45,65) -- (55,65) (50,60) -- (50,70);
+  \draw[fill=highlight color] (50,85) circle(5);
+\end{drawing}
+~%
+\tikzset{
+  horse head/.pic={
+  \begin{scope}[horse outline/.pic={
+    \path
+      (30,25) arc[x radius=20, y radius=2, start angle=-180, end angle=0]
+      (70,25) .. controls +(0,5) and +(0,-5) ..
+      (65,40) .. controls +(0,10) and +(0,-10) ..
+      (70,65) .. controls +(0,10) and +(10,0) ..
+      (50,85) .. controls +(-2,0) and +(2,0) ..
+      (45,80) .. controls +(-5,0) and +(0,5) ..
+      (20,65) .. controls +(0,-10) and +(5,5) ..
+      (28,57) .. controls +(-2,-2) and +(-5,0) ..
+      (35,57) .. controls +(5,0) and +(-2,-2) ..
+      (45,60) .. controls +(-10,-10) and +(-2,10) ..
+      (30,25);
+    }]
+    \pic[fill piece] {horse outline};
+    \draw[highlight color]
+      (66,25) .. controls +(0,5) and +(0,-5) ..
+      (62,40) .. controls +(0,10) and +(0,-10) ..
+      (66,65) .. controls +(0,10) and +(10,0) ..
+      (49,82);
+    \draw[contrast color] (25,69) circle(0); % nostril
+    \draw[contrast color]
+      (42,72) .. controls +(2,1) and +(-1,0) .. (45,73); % eye
+    \pic[draw outline] {horse outline};
+    \draw[fill=piece color] % ear
+      (54,79) .. controls +(3,5) and +(-1,1) ..
+      (65,85) .. controls +(1,-1) and +(5,3) ..
+      (59,74);
+  \end{scope}
+  }
+}%
+\begin{drawing}{piece-knight}
+  \pic {major base};
+  \pic {horse head};
+\end{drawing}
+~
+\begin{drawing}{piece-rook}
+  \pic {major base};
+  \begin{scope}[rook stem/.pic={
+    \path
+      (50,65) --
+      (35,65) .. controls +(1,-15) and +(5,5) ..
+      (30,25) arc[x radius=20, y radius=2, start angle=-180, end angle=0]
+      (70,25) .. controls +(-5,5) and +(-1,-15) ..
+      (65,65) -- (50,65);
+    }]
+    \pic[fill piece] {rook stem};
+    \draw[highlight color]
+      (69,25) .. controls +(-5,5) and +(-1,-15) ..
+      (64,65);
+    \pic[draw outline] {rook stem};
+    \end{scope}
+  \begin{scope}[rook outline/.pic={
+    \path
+      (50,65) -- (25,65) --
+      (25,80) -- (34,80) -- (34,75) -- (44,75) --
+      (44,80) -- (56,80) -- (56,75) -- (66,75) --
+      (66,80) -- (75,80) -- (75,65) -- cycle;
+    }]
+    \pic[fill piece] {rook outline};
+    \draw[highlight color] (73,80) -- (73,65);
+    \pic[draw outline] {rook outline};
+  \end{scope}
+\end{drawing}
+~
+\begin{drawing}{piece-queen}
+  \pic {major base};
+  \begin{scope}[queen outline/.pic={
+    \path
+      (30,25) arc[x radius=20, y radius=2, start angle=-180, end angle=0]
+      (70,25) .. controls +(0,10) and +(-4,-5) ..
+      (84,75) .. controls +(-5,-5) and +(4,8) ..
+      (66,50) .. controls +(0,8) and +(-1,-5) ..
+      (68,83) .. controls +(-2,-5) and +(2,8)..
+      (56,51) .. controls +(-1,8) and +(1,-5) ..
+      (50,85) .. controls +(-1,-5) and +(1,8) ..
+      (44,51) .. controls +(-2,8) and +(2,-5) ..
+      (32,83) .. controls +(1,-5) and +(0,8) ..
+      (34,50) .. controls +(-4,8) and +(5,-5) ..
+      (16,75) .. controls +(4,-5) and +(0,10) ..
+      (30,25);
+    }]
+    \pic[fill piece] {queen outline};
+    \draw[highlight color]
+      (68,25) .. controls +(0,10) and +(-4,-5) ..
+      (84,75);
+    \pic[draw outline] {queen outline};
+  \end{scope}
+  \draw[fill=highlight color]
+    (84,75) circle(5)
+    (68,83) circle(5)
+    (50,85) circle(5)
+    (32,83) circle(5)
+    (16,75) circle(5);
+\end{drawing}
+~
+\begin{drawing}{piece-king}
+  \pic {major base};
+  \begin{scope}[king top/.pic={
+    \path
+      (40,58) .. controls +(0,20) and +(-2,0) ..
+      (50,78) .. controls +(2,0) and +(0,20) ..
+      (60,58);
+    }]
+    \pic[fill piece] {king top};
+    \draw[highlight color]
+      (51,78) .. controls +(2,0) and +(0,20) ..
+      (57,58);
+    \pic[draw outline] {king top};
+  \end{scope}
+  \draw (50,78) -- (50,90) (45,85) -- (55,85);
+  \begin{scope}[king outline/.pic={
+    \path
+      (30,25) arc[x radius=20, y radius=2, start angle=-180, end angle=0]
+      (70,25) .. controls +(1,3) and +(1,-3) ..
+      (70,35) .. controls +(5,5) and +(0,-10) ..
+      (85,58) .. controls +(0,10) and +(8,0) ..
+      (70,73) .. controls +(-20,0) and +(0,10) ..
+      (50,34) .. controls +(0,10) and +(20,0) ..
+      (30,73) .. controls +(-8,0) and +(0,10) ..
+      (15,58) .. controls +(0,-10) and +(-5,5) ..
+      (30,35) .. controls +(-1,-3) and +(-1,3) ..
+      (30,25);
+    }]
+    \pic[fill piece] {king outline};
+    \draw[highlight color]
+      (67,25) .. controls +(1,3) and +(1,-3) ..
+      (67,33) .. controls +(-5,0) and +(5,-1) ..
+      (50,34)
+      (68,35) .. controls +(5,5) and +(0,-10) ..
+      (83,58) .. controls +(0,10) and +(8,0) ..
+      (70,73)
+      (48,34) .. controls +(0,10) and +(20,0) ..
+      (30,73);
+    \draw
+      (30,35) arc[x radius=20, y radius=1, start angle=-180, end angle=0];
+    \pic[draw outline] {king outline};
+  \end{scope}
+\end{drawing}
+
+~
+
+\begin{drawing}{piece-unicorn}
+  \pic {major base};
+  \pic {horse head};
+  \draw[piece color, line cap=butt] (48,80) -- (38,78);
+  \fill[piece color] % horn outline
+    (47,81) -- (30,90) -- (38,77.5);
+  \draw[highlight color]
+    (46,81) -- (30,90);
+  \draw % horn
+    (47,81) -- (30,90) -- (38,77.5);
+\end{drawing}
+~
+\begin{drawing}{piece-lion}
+  \pic {major base};
+  \begin{scope}[lion face/.pic={
+    \path
+      (50,78) --
+      (40,78) .. controls +(-5,-3) and +(5,5) ..
+      (32,71) --
+      (18,63) --
+      (22,53) .. controls +(12,6) and +(12,2) ..
+      (24,47) --
+      (26,41) .. controls +(6,1) and +(-5,0) ..
+      (40,45) .. controls +(0,-10) and +(0,5) ..
+      (35,25) -- (65,25);
+    }]
+    \pic[fill piece] {lion face};
+    \draw[contrast color]
+      (20,60) -- (28,68) % nose
+      (39,70) -- (43,69); % eye
+    \pic[draw outline] {lion face};
+  \end{scope}
+  \begin{scope}[lion mane/.pic={
+    \path
+      (50,23) arc[x radius=20, y radius=2, start angle=-90, end angle=0]
+      (70,25) .. controls +(5,15) and +(0,-15) ..
+      (80,55) .. controls +(0,25) and +(20,0) ..
+      (50,87) .. controls +(-10,0) and +(0,5) ..
+      (40,78) .. controls +(10,0) and +(0,10) ..
+      (50,60) .. controls +(0,-15) and +(0,10) ..
+      (30,25) arc[x radius=20, y radius=2, start angle=-180, end angle=0];
+    }]
+    \pic[fill piece] {lion mane};
+    \draw[highlight color]
+      (68,25) .. controls +(5,15) and +(0,-15) ..
+      (78,55) .. controls +(0,25) and +(20,0) ..
+      (50,87)
+      (42,78) .. controls +(10,0) and +(0,10) ..
+      (52,60) .. controls +(0,-15) and +(0,10) ..
+      (30,25);
+    \pic[draw outline] {lion mane};
+  \end{scope}
+  \draw[contrast color] % ear
+    (58,75) .. controls +(10,0) and +(8,2) ..
+    (62,65);
+  % \path[draw=red]
+  %   (40,78) .. controls +(20,0) and +(0,20) ..
+  %   (50,23);
+\end{drawing}
+~
+\begin{drawing}{piece-dragon}
+  \pic {major base};
+  \begin{scope}[dragon face/.pic={
+    \path
+      (70,25) .. controls +(-5,5) and +(0,-5) ..
+      (64,49) --
+      (70,55) -- (60,55) -- (71,65) -- (61,65) -- (72,75) --
+      (62,75) .. controls +(5,5) and +(-10,0) ..
+      (85,85) .. controls +(-15,3) and +(8,8) ..
+      (40,80) --
+      (18,74) --
+      (22,65) .. controls +(18,6) and +(18,4) ..
+      (24,58) --
+      (26,50) .. controls +(6,1) and +(-5,0) ..
+      (40,54) .. controls +(0,-10) and +(0,5) ..
+      (30,25) arc[x radius=20, y radius=2, start angle=-180, end angle=0]
+      (70,25);
+    }]
+    \pic[fill piece] {dragon face};
+    \draw[highlight color]
+      (69,25) .. controls +(-5,5) and +(0,-5) ..
+      (63,49) --
+      (68,55)
+      (60,55) -- (69,65)
+      (61,65) -- (70,75)
+      (62,75) .. controls +(5,5) and +(-10,0) ..
+      (83,85);
+    \draw[contrast color]
+      (26,74) -- (30,75) % nostril
+      (45,75) .. controls +(2,0) and +(-2,-1) .. (49,76); % eye
+    \pic[draw outline] {dragon face};
+  \end{scope}
+\end{drawing}
+~
+\begin{drawing}{piece-sun}
+  \pic {major base};
+  \pic {bishop stem};
+  \begin{scope}[sun outline/.pic={
+    \path
+      (50,60)
+      +(-180:25) -- +(-157.5:30) -- +(-135:25) -- +(-112.5:30) --
+      +(-90:25) -- +(-67.5:30) -- +(-45:25) -- +(-22.5:30) --
+      +(0:25) -- +(22.5:30) -- +(45:25) -- +(67.5:30) --
+      +(90:25) -- +(112.5:30) -- +(135:25) -- +(157.5:30) -- cycle;
+    }]
+    \pic[fill piece] {sun outline};
+    \draw[highlight color]
+    (48,60)
+      +($(-67.5:30)+(2,0)$) -- +(-45:25) -- +(-22.5:30) --
+      +(0:25) -- +(22.5:30) -- +(45:25) -- +($(67.5:30)+(2,0)$);
+    \pic[draw outline] {sun outline};
+  \end{scope}
+  \begin{scope}
+    \clip (50,60) circle(22.55);
+    \draw[highlight color]
+      (50,35) arc(-85:85:25);
+  \end{scope}
+\end{drawing}
+~
+\begin{drawing}{piece-moon}
+  \pic {major base};
+  \begin{scope}
+    \clip
+      (25,60) arc (-180:0:25) -- (75,60) -- (75,0) -- (25,0) -- cycle;
+    \pic {bishop stem};
+  \end{scope}
+  \begin{scope}[moon outline/.pic={
+    \path
+      ($(50,60)+(-150:27)$) arc(-150:150:27) --
+      ($(50,60)+(150:27)$) arc(135:-135:19.092);
+    }]
+    \pic[fill piece] {moon outline};
+    \draw[highlight color]
+      (50,33) arc(-85:85:27);
+    \pic[draw outline] {moon outline};
+  \end{scope}
+\end{drawing}
+
+\end{document}

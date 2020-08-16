@@ -1,0 +1,10 @@
+\usetikzlibrary{external}
+\tikzexternalize
+\tikzset{x=.1bp, y=.1bp,
+  every picture/.style={line width=.5, line cap=round, line join=round,
+                        outline color}}
+\colorlet{outline color}{black}
+\colorlet{piece color}{white!75!yellow}
+\colorlet{highlight color}{white}
+\colorlet{contrast color}{black}
+\colorlet{shadow color}{white}

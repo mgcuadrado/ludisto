@@ -1,0 +1,38 @@
+Configuration
+-------------
+
+Put in ".makefile.config" something like
+
+    GPP= g++ -std=c++17 -pedantic
+
+How i intend to achieve genericity
+----------------------------------
+
+Moves as strings, game data as "grid", "board::Rules"...
+
+Boldness
+----------
+
+I've found no way of rule-agnostically implementing quiescence searches.
+Quiescence criteria in chess usually involve checking for captures or check,
+and in go, they involve checking for captures.  I could have added a new
+evaluation function (additionaly to the "eval" parameter for "Player") to check
+for quiescence, but i'm gonna experiment with something i've come up with, that
+seems a lil bit similar to quiescence (and may indeed be equivalent in some
+sense); i've called it "boldness".
+
+After we've checked at the regular level with the normal boldnessless
+algorithm, we go on looking for an additional number of levels, only for "bold"
+moves.  Bold moves are defined as those which improve the score of the board
+(seen from the point of view of the player who makes the move) beyond a preset
+threshold.  This threshold is a score increment, which may get bigger and
+bigger at each additional level (i dunno if this is advantageous).
+
+The parameters to control boldness are "boldness_depth", which states how many
+additional levels we may go on examining bold moves, "boldness_score", which is
+the score increment threshold for the first bold level, and "emboldening",
+which is how much additional score increment threshold we add per level.  The
+score increment threshold at each additional bold move is computed as
+"boldness_score+emboldening*(boldness_level-1)", where "boldness_level" is 1
+for the first bold level past the regular search, 2 for the next one, et ainsi
+de suite.

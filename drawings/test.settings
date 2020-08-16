@@ -1,0 +1,12 @@
+\newenvironment{drawing}[1]% \tikzsetnextfilename{#1}
+  {\begin{tikzpicture}\bb}%
+  {\grid\end{tikzpicture}}
+
+\tikzset{x=1bp, y=1bp,
+  every picture/.style={line width=5, line cap=round, line join=round,
+                        outline color}}
+\colorlet{outline color}{black}
+\colorlet{piece color}{white!30!gray}
+\colorlet{highlight color}{white!50!yellow}
+\colorlet{contrast color}{blue}
+\colorlet{shadow color}{white!50!green}

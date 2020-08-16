@@ -1,0 +1,5 @@
+BASICOPTS := -ggdb3
+
+CODEOPTS +=
+
+LIBRARYOPTS :=

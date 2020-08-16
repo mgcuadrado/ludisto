@@ -1,0 +1,289 @@
+.-----------.
+| r n b q k | turn: white
+| p p p p p |
+| - + - + - |
+| + - + - + |
+| P P P P P |
+| R N B Q K |
+'-----------'
+{ A2A3 A2A4 B1A3 B1C3 B2B3 B2B4 C2C3 C2C4 D2D3 D2D4 E2E3 E2E4 }
+1: B2B3 (0.005)
+.-----------.
+| r n b q k | turn: black
+| p p p p p | last: 1. B2B3
+| - + - + - |
+| + P + - + |
+| P + P P P |
+| R N B Q K |
+'-----------'
+{ A5A3 A5A4 B5B4 B6A4 B6C4 C5C3 C5C4 D5D3 D5D4 E5E3 E5E4 }
+2: B5B4 (-0.034)
+.-----------.
+| r n b q k | turn: white
+| p - p p p | last: 2. B5B4
+| - p - + - |
+| + P + - + |
+| P + P P P |
+| R N B Q K |
+'-----------'
+{ A2A3 A2A4 B1A3 B1C3 C1A3 C1B2 C2C3 C2C4 D2D3 D2D4 E2E3 E2E4 }
+3: A2A4 (0.026)
+.-----------.
+| r n b q k | turn: black
+| p - p p p | last: 3. A2A4
+| P p - + - |
+| + P + - + |
+| - + P P P |
+| R N B Q K |
+'-----------'
+{ B4A3 B6A4 B6C4 C5C3 C5C4 C6A4 C6B5 D5D3 D5D4 E5E3 E5E4 }
+4: B4A3 (-0.026)
+.-----------.
+| r n b q k | turn: white
+| p - p p p | last: 4. B4A3
+| - + - + - |
+| p P + - + |
+| - + P P P |
+| R N B Q K |
+'-----------'
+{ A1A2 A1A3 B1A3 B1C3 B3B4 C1A3 C1B2 C2C3 C2C4 D2D3 D2D4 E2E3 E2E4 }
+5: A1A3 (0.197)
+.-----------.
+| r n b q k | turn: black
+| p - p p p | last: 5. A1A3
+| - + - + - |
+| R P + - + |
+| - + P P P |
+| + N B Q K |
+'-----------'
+{ A5A4 B6A4 B6C4 C5C3 C5C4 C6A4 C6B5 D5D3 D5D4 E5E3 E5E4 }
+6: E5E4 (-0.321)
+.-----------.
+| r n b q k | turn: white
+| p - p p + | last: 6. E5E4
+| - + - + p |
+| R P + - + |
+| - + P P P |
+| + N B Q K |
+'-----------'
+{ A3A1 A3A2 A3A4 A3A5 B1C3 B3B4 C1B2 C2C3 C2C4 D2D3 D2D4 E2E3 }
+7: B1C3 (0.431)
+.-----------.
+| r n b q k | turn: black
+| p - p p + | last: 7. B1C3
+| - + - + p |
+| R P N - + |
+| - + P P P |
+| + - B Q K |
+'-----------'
+{ A5A4 B6A4 B6C4 C5C4 C6A4 C6B5 D5D3 D5D4 D6E5 E4E3 E6E5 }
+8: D5D4 (-0.221)
+.-----------.
+| r n b q k | turn: white
+| p - p - + | last: 8. D5D4
+| - + - p p |
+| R P N - + |
+| - + P P P |
+| + - B Q K |
+'-----------'
+{ A3A1 A3A2 A3A4 A3A5 B3B4 C1B2 C3A2 C3A4 C3B1 C3B5 C3D5 C3E4 D2D3 E2E3 }
+9: C3A4 (0.177)
+.-----------.
+| r n b q k | turn: black
+| p - p - + | last: 9. C3A4
+| N + - p p |
+| R P + - + |
+| - + P P P |
+| + - B Q K |
+'-----------'
+{ B6A4 B6C4 B6D5 C5C3 C5C4 C6A4 C6B5 C6D5 D4D3 D6D5 D6E5 E4E3 E6D5 E6E5 }
+10: B6A4 (-0.221)
+.-----------.
+| r + b q k | turn: white
+| p - p - + | last: 10. B6A4
+| n + - p p |
+| R P + - + |
+| - + P P P |
+| + - B Q K |
+'-----------'
+{ A3A1 A3A2 A3A4 B3A4 B3B4 C1B2 C2C3 C2C4 D2D3 E2E3 }
+11: B3A4 (0.213)
+.-----------.
+| r + b q k | turn: black
+| p - p - + | last: 11. B3A4
+| P + - p p |
+| R - + - + |
+| - + P P P |
+| + - B Q K |
+'-----------'
+{ A6B6 C5C3 C5C4 C6A4 C6B5 C6D5 D4D3 D6D5 D6E5 E4E3 E6D5 E6E5 }
+12: D6D5 (0.016)
+.-----------.
+| r + b + k | turn: white
+| p - p q + | last: 12. D6D5
+| P + - p p |
+| R - + - + |
+| - + P P P |
+| + - B Q K |
+'-----------'
+{ A3A1 A3A2 A3B3 A3C3 A3D3 A3E3 C1B2 C2C3 C2C4 D2D3 E2E3 }
+13: C2C3 (-0.002)
+.-----------.
+| r + b + k | turn: black
+| p - p q + | last: 13. C2C3
+| P + - p p |
+| R - P - + |
+| - + - P P |
+| + - B Q K |
+'-----------'
+{ A6B6 C5C4 C6A4 C6B5 D4C3 D4D3 D5A2 D5B3 D5C4 D5D6 D5E5 E4E3 E6D6 E6E5 }
+14: D5C4 (0.002)
+.-----------.
+| r + b + k | turn: white
+| p - p - + | last: 14. D5C4
+| P + q p p |
+| R - P - + |
+| - + - P P |
+| + - B Q K |
+'-----------'
+{ A3A1 A3A2 A3B3 C1B2 C3D4 D1B3 D1C2 D2D3 E2E3 }
+15: D1C2 (-0.201)
+.-----------.
+| r + b + k | turn: black
+| p - p - + | last: 15. D1C2
+| P + q p p |
+| R - P - + |
+| - + Q P P |
+| + - B - K |
+'-----------'
+{ A6B6 C4A2 C4A4 C4B3 C4B4 C4B5 C4C3 C4D3 C4D5 C4E2 C6A4 C6B5 C6D5 D4C3 D4D3 E4E3 E6D5 E6D6 E6E5 }
+16: A6B6 (0.117)
+.-----------.
+| - r b + k | turn: white
+| p - p - + | last: 16. A6B6
+| P + q p p |
+| R - P - + |
+| - + Q P P |
+| + - B - K |
+'-----------'
+{ A3A1 A3A2 A3B3 C1B2 C2A2 C2B1 C2B2 C2B3 C2D1 C2D3 C2E4 C3D4 D2D3 E1D1 E2E3 }
+17: C2A2 (0.071)
+.-----------.
+| - r b + k | turn: black
+| p - p - + | last: 17. C2A2
+| P + q p p |
+| R - P - + |
+| Q + - P P |
+| + - B - K |
+'-----------'
+{ B6A6 B6B1 B6B2 B6B3 B6B4 B6B5 C4A2 C4B3 C4D5 C6A4 C6B5 C6D5 D4C3 D4D3 E4E3 E6D5 E6D6 E6E5 }
+18: C4A2 (-0.071)
+.-----------.
+| - r b + k | turn: white
+| p - p - + | last: 18. C4A2
+| P + - p p |
+| R - P - + |
+| q + - P P |
+| + - B - K |
+'-----------'
+{ A3A2 A3B3 C1B2 C3C4 C3D4 D2D3 E1D1 E2E3 }
+19: A3A2 (-0.084)
+.-----------.
+| - r b + k | turn: black
+| p - p - + | last: 19. A3A2
+| P + - p p |
+| + - P - + |
+| R + - P P |
+| + - B - K |
+'-----------'
+{ B6A6 B6B1 B6B2 B6B3 B6B4 B6B5 C5C4 C6A4 C6B5 C6D5 D4C3 D4D3 E4E3 E6D5 E6D6 E6E5 }
+20: B6B3 (0.084)
+.-----------.
+| - + b + k | turn: white
+| p - p - + | last: 20. B6B3
+| P + - p p |
+| + r P - + |
+| R + - P P |
+| + - B - K |
+'-----------'
+{ A2A1 A2A3 A2B2 A2C2 C1A3 C1B2 C3C4 C3D4 D2D3 E1D1 E2E3 }
+21: C3D4 (-0.084)
+.-----------.
+| - + b + k | turn: black
+| p - p - + | last: 21. C3D4
+| P + - P p |
+| + r + - + |
+| R + - P P |
+| + - B - K |
+'-----------'
+{ B3A3 B3B1 B3B2 B3B4 B3B5 B3B6 B3C3 B3D3 B3E3 C5C3 C5C4 C5D4 C6A4 C6B5 C6D5 E4E3 E6D5 E6D6 }
+22: C5D4 (0.249)
+.-----------.
+| - + b + k | turn: white
+| p - + - + | last: 22. C5D4
+| P + - p p |
+| + r + - + |
+| R + - P P |
+| + - B - K |
+'-----------'
+{ A2A1 A2A3 A2B2 A2C2 C1A3 C1B2 D2D3 E1D1 E2E3 }
+23: C1B2 (-0.2)
+.-----------.
+| - + b + k | turn: black
+| p - + - + | last: 23. C1B2
+| P + - p p |
+| + r + - + |
+| R B - P P |
+| + - + - K |
+'-----------'
+{ B3A3 B3B2 B3B4 B3B5 B3B6 B3C3 B3D3 B3E3 C6A4 C6B5 C6D5 D4D3 E4E3 E6D5 E6D6 E6E5 }
+24: B3B4 (0.232)
+.-----------.
+| - + b + k | turn: white
+| p - + - + | last: 24. B3B4
+| P r - p p |
+| + - + - + |
+| R B - P P |
+| + - + - K |
+'-----------'
+{ A2A1 A2A3 B2A1 B2A3 B2C1 B2C3 B2D4 D2D3 E1D1 E2E3 }
+25: B2A3 (-0.729)
+.-----------.
+| - + b + k | turn: black
+| p - + - + | last: 25. B2A3
+| P r - p p |
+| B - + - + |
+| R + - P P |
+| + - + - K |
+'-----------'
+{ B4A4 B4B1 B4B2 B4B3 B4B5 B4B6 B4C4 C6A4 C6B5 C6D5 D4D3 E4E3 E6D5 E6D6 E6E5 }
+26: B4B1 (9.99998e+29)
+.-----------.
+| - + b + k | turn: white
+| p - + - + | last: 26. B4B1
+| P + - p p |
+| B - + - + |
+| R + - P P |
+| + r + - K |
+'-----------'
+{ A3C1 }
+27: A3C1 (-9.99998e+29)
+.-----------.
+| - + b + k | turn: black
+| p - + - + | last: 27. A3C1
+| P + - p p |
+| + - + - + |
+| R + - P P |
+| + r B - K |
+'-----------'
+{ B1A1 B1B2 B1B3 B1B4 B1B5 B1B6 B1C1 C6A4 C6B5 C6D5 D4D3 E4E3 E6D5 E6D6 E6E5 }
+28: B1C1 (9.99999e+29)
+.-----------.
+| - + b + k | turn: white
+| p - + - + | last: 28. B1C1
+| P + - p p |
+| + - + - + |
+| R + - P P |
+| + - r - K |
+'-----------'
+"computer b" won (28 moves)

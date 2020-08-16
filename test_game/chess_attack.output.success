@@ -1,0 +1,759 @@
+.-----------.
+| r n b q k | turn: white
+| p p p p p |
+| - + - + - |
+| + - + - + |
+| P P P P P |
+| R N B Q K |
+'-----------'
+{ A2A3 A2A4 B1A3 B1C3 B2B3 B2B4 C2C3 C2C4 D2D3 D2D4 E2E3 E2E4 }
+1: B2B3 (0.005)
+.-----------.
+| r n b q k | turn: black
+| p p p p p | last: 1. B2B3
+| - + - + - |
+| + P + - + |
+| P + P P P |
+| R N B Q K |
+'-----------'
+{ A5A3 A5A4 B5B4 B6A4 B6C4 C5C3 C5C4 D5D3 D5D4 E5E3 E5E4 }
+2: B5B4 (-0.022)
+.-----------.
+| r n b q k | turn: white
+| p - p p p | last: 2. B5B4
+| - p - + - |
+| + P + - + |
+| P + P P P |
+| R N B Q K |
+'-----------'
+{ A2A3 A2A4 B1A3 B1C3 C1A3 C1B2 C2C3 C2C4 D2D3 D2D4 E2E3 E2E4 }
+3: A2A4 (0.036)
+.-----------.
+| r n b q k | turn: black
+| p - p p p | last: 3. A2A4
+| P p - + - |
+| + P + - + |
+| - + P P P |
+| R N B Q K |
+'-----------'
+{ B4A3 B6A4 B6C4 C5C3 C5C4 C6A4 C6B5 D5D3 D5D4 E5E3 E5E4 }
+4: B4A3 (-0.036)
+.-----------.
+| r n b q k | turn: white
+| p - p p p | last: 4. B4A3
+| - + - + - |
+| p P + - + |
+| - + P P P |
+| R N B Q K |
+'-----------'
+{ A1A2 A1A3 B1A3 B1C3 B3B4 C1A3 C1B2 C2C3 C2C4 D2D3 D2D4 E2E3 E2E4 }
+5: A1A3 (0.206)
+.-----------.
+| r n b q k | turn: black
+| p - p p p | last: 5. A1A3
+| - + - + - |
+| R P + - + |
+| - + P P P |
+| + N B Q K |
+'-----------'
+{ A5A4 B6A4 B6C4 C5C3 C5C4 C6A4 C6B5 D5D3 D5D4 E5E3 E5E4 }
+6: E5E4 (-0.315)
+.-----------.
+| r n b q k | turn: white
+| p - p p + | last: 6. E5E4
+| - + - + p |
+| R P + - + |
+| - + P P P |
+| + N B Q K |
+'-----------'
+{ A3A1 A3A2 A3A4 A3A5 B1C3 B3B4 C1B2 C2C3 C2C4 D2D3 D2D4 E2E3 }
+7: B1C3 (0.433)
+.-----------.
+| r n b q k | turn: black
+| p - p p + | last: 7. B1C3
+| - + - + p |
+| R P N - + |
+| - + P P P |
+| + - B Q K |
+'-----------'
+{ A5A4 B6A4 B6C4 C5C4 C6A4 C6B5 D5D3 D5D4 D6E5 E4E3 E6E5 }
+8: D5D4 (-0.221)
+.-----------.
+| r n b q k | turn: white
+| p - p - + | last: 8. D5D4
+| - + - p p |
+| R P N - + |
+| - + P P P |
+| + - B Q K |
+'-----------'
+{ A3A1 A3A2 A3A4 A3A5 B3B4 C1B2 C3A2 C3A4 C3B1 C3B5 C3D5 C3E4 D2D3 E2E3 }
+9: C3A4 (0.178)
+.-----------.
+| r n b q k | turn: black
+| p - p - + | last: 9. C3A4
+| N + - p p |
+| R P + - + |
+| - + P P P |
+| + - B Q K |
+'-----------'
+{ B6A4 B6C4 B6D5 C5C3 C5C4 C6A4 C6B5 C6D5 D4D3 D6D5 D6E5 E4E3 E6D5 E6E5 }
+10: B6A4 (-0.207)
+.-----------.
+| r + b q k | turn: white
+| p - p - + | last: 10. B6A4
+| n + - p p |
+| R P + - + |
+| - + P P P |
+| + - B Q K |
+'-----------'
+{ A3A1 A3A2 A3A4 B3A4 B3B4 C1B2 C2C3 C2C4 D2D3 E2E3 }
+11: B3A4 (0.208)
+.-----------.
+| r + b q k | turn: black
+| p - p - + | last: 11. B3A4
+| P + - p p |
+| R - + - + |
+| - + P P P |
+| + - B Q K |
+'-----------'
+{ A6B6 C5C3 C5C4 C6A4 C6B5 C6D5 D4D3 D6D5 D6E5 E4E3 E6D5 E6E5 }
+12: D6D5 (0.008)
+.-----------.
+| r + b + k | turn: white
+| p - p q + | last: 12. D6D5
+| P + - p p |
+| R - + - + |
+| - + P P P |
+| + - B Q K |
+'-----------'
+{ A3A1 A3A2 A3B3 A3C3 A3D3 A3E3 C1B2 C2C3 C2C4 D2D3 E2E3 }
+13: C2C3 (0.004)
+.-----------.
+| r + b + k | turn: black
+| p - p q + | last: 13. C2C3
+| P + - p p |
+| R - P - + |
+| - + - P P |
+| + - B Q K |
+'-----------'
+{ A6B6 C5C4 C6A4 C6B5 D4C3 D4D3 D5A2 D5B3 D5C4 D5D6 D5E5 E4E3 E6D6 E6E5 }
+14: D5C4 (-0.004)
+.-----------.
+| r + b + k | turn: white
+| p - p - + | last: 14. D5C4
+| P + q p p |
+| R - P - + |
+| - + - P P |
+| + - B Q K |
+'-----------'
+{ A3A1 A3A2 A3B3 C1B2 C3D4 D1B3 D1C2 D2D3 E2E3 }
+15: D1C2 (-0.194)
+.-----------.
+| r + b + k | turn: black
+| p - p - + | last: 15. D1C2
+| P + q p p |
+| R - P - + |
+| - + Q P P |
+| + - B - K |
+'-----------'
+{ A6B6 C4A2 C4A4 C4B3 C4B4 C4B5 C4C3 C4D3 C4D5 C4E2 C6A4 C6B5 C6D5 D4C3 D4D3 E4E3 E6D5 E6D6 E6E5 }
+16: C6D5 (0.101)
+.-----------.
+| r + - + k | turn: white
+| p - p b + | last: 16. C6D5
+| P + q p p |
+| R - P - + |
+| - + Q P P |
+| + - B - K |
+'-----------'
+{ A3A1 A3A2 A3B3 C1B2 C2A2 C2B1 C2B2 C2B3 C2D1 C2D3 C2E4 C3D4 D2D3 E1D1 E2E3 }
+17: D2D3 (-0.01)
+.-----------.
+| r + - + k | turn: black
+| p - p b + | last: 17. D2D3
+| P + q p p |
+| R - P P + |
+| - + Q + P |
+| + - B - K |
+'-----------'
+{ A6B6 A6C6 A6D6 C4A2 C4A4 C4B3 C4B4 C4B5 C4C3 C4D3 D4C3 D5C6 E4D3 E4E3 E6D6 E6E5 O-O-O }
+18: E4D3 (0.01)
+.-----------.
+| r + - + k | turn: white
+| p - p b + | last: 18. E4D3
+| P + q p - |
+| R - P p + |
+| - + Q + P |
+| + - B - K |
+'-----------'
+{ A3A1 A3A2 A3B3 C1B2 C1D2 C1E3 C2A2 C2B1 C2B2 C2B3 C2D1 C2D2 C2D3 C3D4 E1D1 E1D2 E2D3 E2E3 E2E4 }
+19: E2D3 (2.692)
+.-----------.
+| r + - + k | turn: black
+| p - p b + | last: 19. E2D3
+| P + q p - |
+| R - P P + |
+| - + Q + - |
+| + - B - K |
+'-----------'
+{ A6B6 A6C6 A6D6 C4A2 C4A4 C4B3 C4B4 C4B5 C4C3 C4D3 D4C3 D5C6 D5E4 E6D6 E6E5 O-O-O }
+20: D5E4 (-2.692)
+.-----------.
+| r + - + k | turn: white
+| p - p - + | last: 20. D5E4
+| P + q p b |
+| R - P P + |
+| - + Q + - |
+| + - B - K |
+'-----------'
+{ A3A1 A3A2 A3B3 C1B2 C1D2 C1E3 C2A2 C2B1 C2B2 C2B3 C2D1 C2D2 C2E2 C3D4 D3C4 D3E4 E1D1 E1D2 E1E2 }
+21: D3E4 (2.555)
+.-----------.
+| r + - + k | turn: black
+| p - p - + | last: 21. D3E4
+| P + q p P |
+| R - P - + |
+| - + Q + - |
+| + - B - K |
+'-----------'
+{ A6B6 A6C6 A6D6 C4A2 C4A4 C4B3 C4B4 C4B5 C4C3 C4D3 C4D5 C4E2 D4C3 D4D3 E6D6 E6E5 O-O-O }
+22: A6B6 (-2.683)
+.-----------.
+| - r - + k | turn: white
+| p - p - + | last: 22. A6B6
+| P + q p P |
+| R - P - + |
+| - + Q + - |
+| + - B - K |
+'-----------'
+{ A3A1 A3A2 A3B3 C1B2 C1D2 C1E3 C2A2 C2B1 C2B2 C2B3 C2D1 C2D2 C2D3 C2E2 C3D4 E1D1 E1D2 E4E5 }
+23: E1D2 (2.587)
+.-----------.
+| - r - + k | turn: black
+| p - p - + | last: 23. E1D2
+| P + q p P |
+| R - P - + |
+| - + Q K - |
+| + - B - + |
+'-----------'
+{ B6A6 B6B1 B6B2 B6B3 B6B4 B6B5 B6C6 B6D6 C4A2 C4A4 C4A6 C4B3 C4B4 C4B5 C4C3 C4D3 C4D5 C4E2 D4C3 D4D3 E6D6 E6E5 }
+24: B6D6 (-2.59)
+.-----------.
+| - + - r k | turn: white
+| p - p - + | last: 24. B6D6
+| P + q p P |
+| R - P - + |
+| - + Q K - |
+| + - B - + |
+'-----------'
+{ A3A1 A3A2 A3B3 C1B2 C2A2 C2B1 C2B2 C2B3 C2D1 C2D3 C3D4 D2D1 D2E1 E4E5 }
+25: D2E1 (2.544)
+.-----------.
+| - + - r k | turn: black
+| p - p - + | last: 25. D2E1
+| P + q p P |
+| R - P - + |
+| - + Q + - |
+| + - B - K |
+'-----------'
+{ C4A2 C4A4 C4A6 C4B3 C4B4 C4B5 C4C3 C4D3 C4D5 C4E2 D4C3 D4D3 D6A6 D6B6 D6C6 D6D5 E6E5 }
+26: D6B6 (-2.668)
+.-----------.
+| - r - + k | turn: white
+| p - p - + | last: 26. D6B6
+| P + q p P |
+| R - P - + |
+| - + Q + - |
+| + - B - K |
+'-----------'
+{ A3A1 A3A2 A3B3 C1B2 C1D2 C1E3 C2A2 C2B1 C2B2 C2B3 C2D1 C2D2 C2D3 C2E2 C3D4 E1D1 E1D2 E4E5 }
+27: E1D1 (2.556)
+.-----------.
+| - r - + k | turn: black
+| p - p - + | last: 27. E1D1
+| P + q p P |
+| R - P - + |
+| - + Q + - |
+| + - B K + |
+'-----------'
+{ B6A6 B6B1 B6B2 B6B3 B6B4 B6B5 B6C6 B6D6 C4A2 C4A4 C4A6 C4B3 C4B4 C4B5 C4C3 C4D3 C4D5 C4E2 D4C3 D4D3 E6D6 E6E5 }
+28: D4D3 (-2.433)
+.-----------.
+| - r - + k | turn: white
+| p - p - + | last: 28. D4D3
+| P + q + P |
+| R - P p + |
+| - + Q + - |
+| + - B K + |
+'-----------'
+{ A3A1 A3A2 A3B3 C1B2 C1D2 C1E3 C2A2 C2B1 C2B2 C2B3 C2D2 C2D3 C2E2 D1D2 D1E1 E4E5 }
+29: C2A2 (2.513)
+.-----------.
+| - r - + k | turn: black
+| p - p - + | last: 29. C2A2
+| P + q + P |
+| R - P p + |
+| Q + - + - |
+| + - B K + |
+'-----------'
+{ B6A6 B6B1 B6B2 B6B3 B6B4 B6B5 B6C6 B6D6 C4A2 C4B3 C4D5 D3D2 E6D6 E6E5 }
+30: C4A2 (-2.513)
+.-----------.
+| - r - + k | turn: white
+| p - p - + | last: 30. C4A2
+| P + - + P |
+| R - P p + |
+| q + - + - |
+| + - B K + |
+'-----------'
+{ A3A2 A3B3 C1B2 C1D2 C1E3 C3C4 D1E1 E4E5 }
+31: A3A2 (2.696)
+.-----------.
+| - r - + k | turn: black
+| p - p - + | last: 31. A3A2
+| P + - + P |
+| + - P p + |
+| R + - + - |
+| + - B K + |
+'-----------'
+{ B6A6 B6B1 B6B2 B6B3 B6B4 B6B5 B6C6 B6D6 C5C4 D3D2 E6D6 E6E5 }
+32: E6E5 (-2.566)
+.-----------.
+| - r - + - | turn: white
+| p - p - k | last: 32. E6E5
+| P + - + P |
+| + - P p + |
+| R + - + - |
+| + - B K + |
+'-----------'
+{ A2A1 A2A3 A2B2 A2C2 A2D2 A2E2 C1A3 C1B2 C1D2 C1E3 C3C4 D1D2 D1E1 }
+33: C1E3 (2.566)
+.-----------.
+| - r - + - | turn: black
+| p - p - k | last: 33. C1E3
+| P + - + P |
+| + - P p B |
+| R + - + - |
+| + - + K + |
+'-----------'
+{ B6A6 B6B1 B6B2 B6B3 B6B4 B6B5 B6C6 B6D6 B6E6 C5C4 D3D2 E5D6 E5E4 E5E6 }
+34: B6C6 (-2.195)
+.-----------.
+| - + r + - | turn: white
+| p - p - k | last: 34. B6C6
+| P + - + P |
+| + - P p B |
+| R + - + - |
+| + - + K + |
+'-----------'
+{ A2A1 A2A3 A2B2 A2C2 A2D2 A2E2 C3C4 D1C1 D1D2 D1E1 E3C1 E3C5 E3D2 E3D4 }
+35: E3D2 (2.176)
+.-----------.
+| - + r + - | turn: black
+| p - p - k | last: 35. E3D2
+| P + - + P |
+| + - P p + |
+| R + - B - |
+| + - + K + |
+'-----------'
+{ C5C4 C6A6 C6B6 C6D6 C6E6 E5D6 E5E4 E5E6 }
+36: E5E4 (-2.064)
+.-----------.
+| - + r + - | turn: white
+| p - p - + | last: 36. E5E4
+| P + - + k |
+| + - P p + |
+| R + - B - |
+| + - + K + |
+'-----------'
+{ A2A1 A2A3 A2B2 A2C2 C3C4 D1C1 D1E1 D2C1 D2E1 D2E3 }
+37: A2B2 (2.22)
+.-----------.
+| - + r + - | turn: black
+| p - p - + | last: 37. A2B2
+| P + - + k |
+| + - P p + |
+| - R - B - |
+| + - + K + |
+'-----------'
+{ C5C4 C6A6 C6B6 C6D6 C6E6 E4D5 E4E5 }
+38: C5C4 (-1.885)
+.-----------.
+| - + r + - | turn: white
+| p - + - + | last: 38. C5C4
+| P + p + k |
+| + - P p + |
+| - R - B - |
+| + - + K + |
+'-----------'
+{ B2A2 B2B1 B2B3 B2B4 B2B5 B2B6 B2C2 D1C1 D1E1 D2C1 D2E1 D2E3 }
+39: B2B1 (2.02)
+.-----------.
+| - + r + - | turn: black
+| p - + - + | last: 39. B2B1
+| P + p + k |
+| + - P p + |
+| - + - B - |
+| + R + K + |
+'-----------'
+{ C6A6 C6B6 C6C5 C6D6 C6E6 E4D5 E4E5 }
+40: C6D6 (-1.814)
+.-----------.
+| - + - r - | turn: white
+| p - + - + | last: 40. C6D6
+| P + p + k |
+| + - P p + |
+| - + - B - |
+| + R + K + |
+'-----------'
+{ B1A1 B1B2 B1B3 B1B4 B1B5 B1B6 B1C1 D1C1 D1E1 D2C1 D2E1 D2E3 }
+41: D1C1 (2.087)
+.-----------.
+| - + - r - | turn: black
+| p - + - + | last: 41. D1C1
+| P + p + k |
+| + - P p + |
+| - + - B - |
+| + R K - + |
+'-----------'
+{ D6A6 D6B6 D6C6 D6D4 D6D5 D6E6 E4D5 E4E5 }
+42: D6C6 (-1.883)
+.-----------.
+| - + r + - | turn: white
+| p - + - + | last: 42. D6C6
+| P + p + k |
+| + - P p + |
+| - + - B - |
+| + R K - + |
+'-----------'
+{ B1A1 B1B2 B1B3 B1B4 B1B5 B1B6 C1B2 C1D1 D2E1 D2E3 }
+43: B1B2 (2.015)
+.-----------.
+| - + r + - | turn: black
+| p - + - + | last: 43. B1B2
+| P + p + k |
+| + - P p + |
+| - R - B - |
+| + - K - + |
+'-----------'
+{ C6A6 C6B6 C6C5 C6D6 C6E6 E4D5 E4E5 }
+44: C6D6 (-1.81)
+.-----------.
+| - + - r - | turn: white
+| p - + - + | last: 44. C6D6
+| P + p + k |
+| + - P p + |
+| - R - B - |
+| + - K - + |
+'-----------'
+{ B2A2 B2B1 B2B3 B2B4 B2B5 B2B6 B2C2 C1B1 C1D1 D2E1 D2E3 }
+45: C1B1 (2.086)
+.-----------.
+| - + - r - | turn: black
+| p - + - + | last: 45. C1B1
+| P + p + k |
+| + - P p + |
+| - R - B - |
+| + K + - + |
+'-----------'
+{ D6A6 D6B6 D6C6 D6D4 D6D5 D6E6 E4D5 E4E5 }
+46: D6C6 (-1.88)
+.-----------.
+| - + r + - | turn: white
+| p - + - + | last: 46. D6C6
+| P + p + k |
+| + - P p + |
+| - R - B - |
+| + K + - + |
+'-----------'
+{ B1A1 B1A2 B1C1 B2A2 B2B3 B2B4 B2B5 B2B6 B2C2 D2C1 D2E1 D2E3 }
+47: B1A2 (2.035)
+.-----------.
+| - + r + - | turn: black
+| p - + - + | last: 47. B1A2
+| P + p + k |
+| + - P p + |
+| K R - B - |
+| + - + - + |
+'-----------'
+{ C6A6 C6B6 C6C5 C6D6 C6E6 E4D5 E4E5 }
+48: C6D6 (-1.801)
+.-----------.
+| - + - r - | turn: white
+| p - + - + | last: 48. C6D6
+| P + p + k |
+| + - P p + |
+| K R - B - |
+| + - + - + |
+'-----------'
+{ A2A1 A2A3 A2B1 B2B1 B2B3 B2B4 B2B5 B2B6 B2C2 D2C1 D2E1 D2E3 }
+49: B2B1 (2.092)
+.-----------.
+| - + - r - | turn: black
+| p - + - + | last: 49. B2B1
+| P + p + k |
+| + - P p + |
+| K + - B - |
+| + R + - + |
+'-----------'
+{ D6A6 D6B6 D6C6 D6D4 D6D5 D6E6 E4D5 E4E5 }
+50: D6C6 (-1.86)
+.-----------.
+| - + r + - | turn: white
+| p - + - + | last: 50. D6C6
+| P + p + k |
+| + - P p + |
+| K + - B - |
+| + R + - + |
+'-----------'
+{ A2A1 A2A3 A2B2 B1A1 B1B2 B1B3 B1B4 B1B5 B1B6 B1C1 B1D1 B1E1 D2C1 D2E1 D2E3 }
+51: B1E1 (2.046)
+.-----------.
+| - + r + - | turn: black
+| p - + - + | last: 51. B1E1
+| P + p + k |
+| + - P p + |
+| K + - B - |
+| + - + - R |
+'-----------'
+{ E4D5 }
+52: E4D5 (-1.827)
+.-----------.
+| - + r + - | turn: white
+| p - + k + | last: 52. E4D5
+| P + p + - |
+| + - P p + |
+| K + - B - |
+| + - + - R |
+'-----------'
+{ A2A1 A2A3 A2B1 A2B2 D2C1 D2E3 E1A1 E1B1 E1C1 E1D1 E1E2 E1E3 E1E4 E1E5 E1E6 }
+53: E1C1 (1.955)
+.-----------.
+| - + r + - | turn: black
+| p - + k + | last: 53. E1C1
+| P + p + - |
+| + - P p + |
+| K + - B - |
+| + - R - + |
+'-----------'
+{ C6A6 C6B6 C6C5 C6D6 C6E6 D5C5 D5D6 D5E4 D5E5 D5E6 }
+54: C6C5 (-1.733)
+.-----------.
+| - + - + - | turn: white
+| p - r k + | last: 54. C6C5
+| P + p + - |
+| + - P p + |
+| K + - B - |
+| + - R - + |
+'-----------'
+{ A2A1 A2A3 A2B1 A2B2 C1A1 C1B1 C1C2 C1D1 C1E1 D2E1 D2E3 }
+55: D2E3 (2.107)
+.-----------.
+| - + - + - | turn: black
+| p - r k + | last: 55. D2E3
+| P + p + - |
+| + - P p B |
+| K + - + - |
+| + - R - + |
+'-----------'
+{ C5B5 C5C6 D3D2 D5C6 D5D6 D5E4 D5E5 D5E6 }
+56: C5C6 (-1.815)
+.-----------.
+| - + r + - | turn: white
+| p - + k + | last: 56. C5C6
+| P + p + - |
+| + - P p B |
+| K + - + - |
+| + - R - + |
+'-----------'
+{ A2A1 A2A3 A2B1 A2B2 C1A1 C1B1 C1C2 C1D1 C1E1 E3B6 E3C5 E3D2 E3D4 }
+57: C1B1 (2.194)
+.-----------.
+| - + r + - | turn: black
+| p - + k + | last: 57. C1B1
+| P + p + - |
+| + - P p B |
+| K + - + - |
+| + R + - + |
+'-----------'
+{ C6A6 C6B6 C6C5 C6D6 C6E6 D3D2 D5D6 D5E4 D5E5 D5E6 }
+58: D5E4 (-1.807)
+.-----------.
+| - + r + - | turn: white
+| p - + - + | last: 58. D5E4
+| P + p + k |
+| + - P p B |
+| K + - + - |
+| + R + - + |
+'-----------'
+{ A2A1 A2A3 A2B2 B1A1 B1B2 B1B3 B1B4 B1B5 B1B6 B1C1 B1D1 B1E1 E3B6 E3C1 E3C5 E3D2 E3D4 }
+59: E3B6 (2.354)
+.-----------.
+| - B r + - | turn: black
+| p - + - + | last: 59. E3B6
+| P + p + k |
+| + - P p + |
+| K + - + - |
+| + R + - + |
+'-----------'
+{ C6B6 C6C5 C6D6 C6E6 D3D2 E4D5 E4E5 }
+60: C6D6 (-2.354)
+.-----------.
+| - B - r - | turn: white
+| p - + - + | last: 60. C6D6
+| P + p + k |
+| + - P p + |
+| K + - + - |
+| + R + - + |
+'-----------'
+{ A2A1 A2A3 A2B2 B1A1 B1B2 B1B3 B1B4 B1B5 B1C1 B1D1 B1E1 B6A5 B6C5 B6D4 B6E3 }
+61: B6A5 (2.822)
+.-----------.
+| - + - r - | turn: black
+| B - + - + | last: 61. B6A5
+| P + p + k |
+| + - P p + |
+| K + - + - |
+| + R + - + |
+'-----------'
+{ D3D2 D6A6 D6B6 D6C6 D6D4 D6D5 D6E6 E4D5 E4E3 E4E5 }
+62: D3D2 (-2.327)
+.-----------.
+| - + - r - | turn: white
+| B - + - + | last: 62. D3D2
+| P + p + k |
+| + - P - + |
+| K + - p - |
+| + R + - + |
+'-----------'
+{ A2A1 A2A3 A2B2 A5B4 A5B6 B1A1 B1B2 B1B3 B1B4 B1B5 B1B6 B1C1 B1D1 B1E1 }
+63: B1D1 (2.334)
+.-----------.
+| - + - r - | turn: black
+| B - + - + | last: 63. B1D1
+| P + p + k |
+| + - P - + |
+| K + - p - |
+| + - + R + |
+'-----------'
+{ D6A6 D6B6 D6C6 D6D3 D6D4 D6D5 D6E6 E4D3 E4D5 E4E3 E4E5 }
+64: D6A6 (-1.788)
+.-----------.
+| r + - + - | turn: white
+| B - + - + | last: 64. D6A6
+| P + p + k |
+| + - P - + |
+| K + - p - |
+| + - + R + |
+'-----------'
+{ A2A1 A2A3 A2B1 A2B2 A5B4 A5B6 D1A1 D1B1 D1C1 D1D2 D1E1 }
+65: A5B4 (1.797)
+.-----------.
+| r + - + - | turn: black
+| + - + - + | last: 65. A5B4
+| P B p + k |
+| + - P - + |
+| K + - p - |
+| + - + R + |
+'-----------'
+{ A6A4 A6A5 A6B6 A6C6 A6D6 A6E6 E4D3 E4D5 E4E3 E4E5 }
+66: A6A4 (-1.797)
+.-----------.
+| - + - + - | turn: white
+| + - + - + | last: 66. A6A4
+| r B p + k |
+| + - P - + |
+| K + - p - |
+| + - + R + |
+'-----------'
+{ A2B1 A2B2 B4A3 }
+67: A2B1 (1.796)
+.-----------.
+| - + - + - | turn: black
+| + - + - + | last: 67. A2B1
+| r B p + k |
+| + - P - + |
+| - + - p - |
+| + K + R + |
+'-----------'
+{ A4A1 A4A2 A4A3 A4A5 A4A6 A4B4 E4D3 E4D5 E4E3 E4E5 }
+68: E4D3 (-1.792)
+.-----------.
+| - + - + - | turn: white
+| + - + - + | last: 68. E4D3
+| r B p + - |
+| + - P k + |
+| - + - p - |
+| + K + R + |
+'-----------'
+{ B1B2 B4A3 B4A5 B4C5 B4D6 D1C1 D1D2 D1E1 }
+69: B1B2 (1.804)
+.-----------.
+| - + - + - | turn: black
+| + - + - + | last: 69. B1B2
+| r B p + - |
+| + - P k + |
+| - K - p - |
+| + - + R + |
+'-----------'
+{ A4A1 A4A2 A4A3 A4A5 A4A6 A4B4 D3E2 D3E3 D3E4 }
+70: D3E2 (-1.795)
+.-----------.
+| - + - + - | turn: white
+| + - + - + | last: 70. D3E2
+| r B p + - |
+| + - P - + |
+| - K - p k |
+| + - + R + |
+'-----------'
+{ B2B1 B2C2 B4A3 B4A5 B4C5 B4D6 D1A1 D1B1 D1C1 D1D2 D1E1 }
+71: B2C2 (1.875)
+.-----------.
+| - + - + - | turn: black
+| + - + - + | last: 71. B2C2
+| r B p + - |
+| + - P - + |
+| - + K p k |
+| + - + R + |
+'-----------'
+{ A4A1 A4A2 A4A3 A4A5 A4A6 A4B4 E2E3 }
+72: A4A2 (-1.875)
+.-----------.
+| - + - + - | turn: white
+| + - + - + | last: 72. A4A2
+| - B p + - |
+| + - P - + |
+| r + K p k |
+| + - + R + |
+'-----------'
+{ C2B1 }
+73: C2B1 (1.801)
+.-----------.
+| - + - + - | turn: black
+| + - + - + | last: 73. C2B1
+| - B p + - |
+| + - P - + |
+| r + - p k |
+| + K + R + |
+'-----------'
+{ A2A1 A2A3 A2A4 A2A5 A2A6 A2B2 A2C2 E2D1 E2D3 E2E3 }
+74: A2A4 (-0)
+.-----------.
+| - + - + - | turn: white
+| + - + - + | last: 74. A2A4
+| r B p + - |
+| + - P - + |
+| - + - p k |
+| + K + R + |
+'-----------'
+{ B1B2 B1C2 B4A3 B4A5 B4C5 B4D6 D1C1 D1D2 D1E1 }
+75: B1C2 (0)
+.-----------.
+| - + - + - | turn: black
+| + - + - + | last: 75. B1C2
+| r B p + - |
+| + - P - + |
+| - + K p k |
+| + - + R + |
+'-----------'
+it's a draw (75 moves)

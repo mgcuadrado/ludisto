@@ -1,0 +1,953 @@
+391
+  added site
+390
+  used C++17 nested namespaces
+389
+  drew grey pieces; they could be useful e.g. for the arrows of the game
+  of amazons
+388
+  started using C++17
+387
+  a couple more articles about Monte Carlo
+386
+  made Monte-Carlo more like it should be (not there yet, though)
+385
+  improved "loop()" to avoid warnings about unused variable in the client code
+384
+  more debugging info for Monte-Carlo
+383
+  some cleaning
+382
+  slightly unstupidified the Monte-Carlo playing method
+381
+  corrected "LimitedRepetition" limit case, and coded new "DrawIfRoyalsAlone"
+380
+  coded a very stupid, blind-selection, Monte-Carlo playing method; left
+  it with some printouts for development
+379
+  downloaded poster about Monte Carlo
+378
+  passed a string rather than an "AlgoParams" to the computer player
+377
+  added stones for go and amazons
+376
+  reworked the lion's mane
+375
+  added a pointer for Monte Carlo search
+374
+  wrote an insight about draughts move generation and "ForceCaptureIfPossible"
+373
+  changed evaluation settings for English draughts test game
+372
+  new-style implementation for English draughts
+371
+  added a capture command, to mark captures; this will make it possible to
+  implement rules that enforce capturing if possible
+370
+  performed the hypothetical moves to check for check (royal straight, and
+  king in castling) through the move handler, rather than directly on the
+  board, in case some other operations, subscribed through the move handler,
+  are relevant
+369
+  lowered boldness depth to 6; surprisingly, most of the games were unchanged,
+  but ran faster
+368
+  coded the capability to extract the list of command codes in a move
+367
+  more comments, some refactoring, and a new capability for
+  "PerSquareLegalMovesFilter"
+366
+  more comments
+365
+  commented "piece_box.h"
+364
+  finally short-circuited the checking for any valid move, for a 30%
+  execution time improvement with respect to the original state
+363
+  code per-move rejection (for check and such)
+362
+  corrected "can_move_straight_and_screen_capture()" (was wrong for
+  "only_capture==true")
+361
+  reduced the execution time worsening to just 10% by passing the "add_move()"
+  function object by reference (passing the list of captured locations by
+  reference had almost no impact, but i made it anyway); remember: pass
+  function objects by reference
+360
+  refactored the per-square legal move generation so that it can be
+  short-circuited when checking if there's any legal move (short-circuit
+  not done yet); 30% worse execution time for now...
+359
+  actually moved the king along its castling path when checking for castling
+  security
+358
+  some minor changes before i change the approach to filtering-out moves
+357
+  hid "add_move_no_check()", in preparation for per-move censoring (e.g.,
+  to avoid king in check)
+356
+  added "-H" to test games
+355
+  corrected straight moves with screen capture: when just checking, don't
+  report moves in the non-capture phase
+354
+  1% improvement by prechecking reacchableness when just cheking for
+  one-step moves
+353
+  5% improvement by prechecking reacchableness when just cheking for
+  straight moves
+352
+  refactored some display-related functions up
+351
+  factored "just_material" and "material_and_position" evaluations up
+350
+  finalised Caïssa Britannica promotion implementation
+349
+  added bishop's non-capturing move
+348
+  added a test game for Caïssa Britannia (even though there are at least
+  two remaining missing features)
+347
+  added a flag to show legal moves at each move; this will make test coverage
+  greater without greatly impacting execution time
+346
+  improved Caïssa Britannia; some details remain
+345
+  first shot at Caïssa Britannia; dumps core
+344
+  minor edits
+343
+  miscellaneous localised code simplifications
+342
+  installed the new-style chess as the official one, and moved the old one
+  to subdirectory "old"
+341
+  moved many game features up from chess to FIDE (from being specified in
+  the chess data to be offered as standalone structs in FIDE)
+340
+  improved the syntax for "SimpleMoves", and handled "change_to" in a
+  different way (before, to get no piece change, you had to make it "empty";
+  now, you have to make it the same as the moved piece)
+339
+  kept a reference to the piece box in the base "Piece2DGameData"
+338
+  coded chess-attack within the new chess code; still some code reworking
+  is needed, but the automatic tets is already working
+337
+  moved initialisations from piece box up
+336
+  moved move human representation up
+335
+  added Chess960 to the new-style code
+334
+  small reorganisation
+333
+  moved "SquareCount" one class up
+332
+  separated piece box into its own module
+331
+  added two no-random games to check new implementation of "chess_attack"
+  and "chess960" (not yet done)
+330
+  some syntactic sugar to convert square names to squares using the piece box
+329
+  finally removed the enum for the squares, in favour of the piece box
+328
+  continued the piece box experiment
+327
+  unfinished experiment with new concept piece box
+326
+  some more code reorganisation
+325
+  reorganised new-chess code
+324
+  output only the current game name
+323
+  since the state has changed, the only way to check "chess_new" against
+  "chess" is with a zero-randomness game; so i added two such games, for
+  "chess" and "chess_new", and checked their result is identical
+322
+  added all FIDE evaluation function to the new chess test
+321
+  added all FIDE evaluation functions to the test
+320
+  transplanted and teste michniewski
+319
+  coded check mate
+318
+  took square color from square whenever we're talking about a square,
+  instead of taking it from turn, which was making "is_under_attack()"
+  work wrong (and making castling too permissive)
+317
+  coded pawn promotion
+316
+  unified pawn movement into a single function, to ease implementation
+  of promotion
+315
+  corrected pawns jumping over other pieces
+314
+  coded king castling
+313
+  metaprogrammed away the packing and unpacking of move arguments into and
+  out of move streams, which enabled some further simplifications
+312
+  integrated a little bit move codes and creation into their handlers
+311
+  added the possibility to reduce the range of counted pieces
+310
+  coded per-feature initialisation
+309
+  some simple beautification
+308
+  some renaming to get "series<T>" to mean "initializer_list<T>", which
+  describes better a lot of its usages
+307
+  coded check avoidance, and refactored lists-of-things
+306
+  added automatic test for the refactoring, with expected final test result
+305
+  coded en passant
+304
+  deep refactoring of "chess.cpp"; not finished yet; at least the following
+  are missing: checking for check, check mate, castling, en passant
+303
+  corrected initialisation-order fiasco, and added missing argument to
+  "display_ansi_straight_2d()"
+302
+  added a new version of "is_in()", with initializer lists
+301
+  added debug information to the optimised variant
+300
+  clarified hash-related types
+299
+  added non-regression tests for all games
+298
+  added the possibility to specify the starting position for chess960, by its
+  Scharnagl index (had to add the capability to add arguments to rule names)
+297
+  replaced chess960 initial configuration by an index-based approach,
+  so that we can choose to start with a specific initial configuration
+  (but i haven't yet coded the way to specify it)
+296
+  some syntax simplifications, and drew sun and moon
+295
+  changed "every path" into "every picture", lest the clipping commands fail
+294
+  added a function to translate from string to board, to improve readability
+  of initialising functions
+293
+  small adjustments
+292
+  some adjustments to existing drawings, and new drawings for Caïssa
+  Britannia (unicorn, lion, dragon)
+291
+  installed my own pieces
+290
+  drew draughts
+289
+  adjusted height of pieces
+288
+  converted pieces to SVG
+287
+  a step towards converting pieces to SVG
+286
+  drew the pieces with TikZ, for them to be converted to SVG with "pdf2svg"
+285
+  cleaned up and documented a lil bit
+284
+  replaced redundant promotion map specification with an algorithm to build
+  it from the opposite-direction promotion map
+283
+  changed individual piece SVG definitions, so that each one is a standalone
+  SVG file (this will be more convenient when editing them)
+282
+  put the moves function directory in "ChessData"
+281
+  abstracted out the moves function dictionary
+280
+  small code simplification
+279
+  corrected rectangle containedness
+278
+  generalised rule for move outcome legality
+277
+  oops; actually, in chess attack, pawns can move two steps initially,
+  and capture en passant; solved
+276
+  final touches for chess attack; i think it's complete now
+275
+  added preliminary implementation for chess attack (pawns are not chess
+  attack pawns yet)
+274
+  corrected syntax error in assert
+273
+  corrected default evaluator for player A, but had to add it back from
+  "main()" (if i wanted to keep the test match between different evaluators)
+272
+  a lil bit of more cleaning: joined data and board in remaining cases
+271
+  a lil bit of cleaning: joined data and board in many cases
+270
+  passed around all the time the chess data; this is the final stage,
+  methinks, before i can generalise on board size et al; but i'll probably
+  clean the code a lil bit first
+269
+  refactored chess data into a "unique_ptr<>"-based collection of addressings,
+  so that we can have different chess data for different games (different
+  board sizes, en-passant or not...)
+268
+  yet another preparation (this time just syntactic sugar), as a step
+  towards absracting the kind of board for chess variants
+267
+  transplanted an "any" implementation from oxys; not yet tested
+266
+  added "get_if_contains()" accesses to data, to test for containedness and
+  get the contained cell in the same call; i wanted to get better performance,
+  but i just got abstraction
+265
+  finally applied general boards to draughts; had to do some final adjustments
+264
+  yet another step: incorporated the containedness function into the straight
+  board definition
+263
+  another step towards general boards: "contains()" now checks for valid index
+262
+  another step towards general boards (including boards with holes): board
+  containedness functions and their algebra (not tested)
+261
+  optimised the formula for "relative_cell_index()" and added a "compact"
+  structure meant to simplify boards with wholes (e.g., draughts)
+260
+  intermediate step towards generality regarding board-size (and other game
+  characteristics), so that pieces can be reused for boards of different
+  sizes; boards of different shapes will require some additional class
+  hierarchies ("GeneralStraight2D<|-Straight2D")
+259
+  slightlily generalised castling positions
+258
+  symbolic link to the "sxako_gui" executable in the root dir
+257
+  made game-specific modules body-only by leaving only a failed static
+  assert in their headers
+256
+  added command-line selection of evaluation function, and default evaluation
+  function specification per game spec
+255
+  added a map of game specs and some options to query it (can't select game
+  or evaluation functions yet)
+254
+  corrected wrong behaviour when exiting after command-line option parsing;
+  should be "exit()" rather than "throw"
+253
+  added "-DNDEBUG" to the "opt" variant for a execution time boost (i had
+  forgotten); added a "assert" variant that is like the old "opt"
+252
+  corrected some special cases of castling for chess960
+251
+  added an exact match criterion to "parse_move_default()"; otherwise,
+  if both "O-O" and "O-O-O" are candidates, you can't choose the former
+250
+  added a "-f" command-line option to play Fischer's chess960
+249
+  coded chess960 rules, but didn't add any related command-line option yet
+248
+  added nullipotent markers for pawn promotion and the two castlings (for
+  simpler code), and changed castling representation from just the king
+  movement to "O-O" or "O-O-O" (in preparation for Chess960, in which the
+  king movement may not be enough to specify a castling move)
+247
+  changed castling implementation to make it compatible with Chess960
+246
+  added the concept of visible coord, which is important when drawing
+  draughts, because even squares that aren't part of the game are drawn
+  (the light ones)
+245
+  corrected light and dark square images; there's a problem with draughts:
+  only squares in "all_enumerated_coords" are drawn, which means light
+  squares aren't
+244
+  minor edits
+243
+  realised "Application::create()" doesn't need any arguments actually,
+  and removed some unnecessary artifacts
+242
+  made the players stop playing when the "quit" button is pressed
+241
+  generalised some functions to avoid code repetition
+240
+  added SVG output to draughts
+239
+  tiny documentation improvements
+238
+  reorganised a bit of GUI code, and moved the "undo" button just below the
+  "move" entry area
+237
+  drew an ascii represetation of the GUI
+236
+  tidied up code
+235
+  extracted "SVGDrawingArea" to a separate SVG support module
+234
+  added an interesting link for SVG pieces
+233
+  added SVG definitions for draughts
+232
+  took the square definitions from the used squares, so that we don't have
+  to specify them a priori
+231
+  descended down to the "rsvg" library, to be able to control de scale of
+  the SVG window
+230
+  solved undo before any move
+229
+  added "undo" button, and improved the message area
+228
+  made messages gui-based
+227
+  coded a gui-based text move entry
+226
+  separated parsing from playing
+225
+  slight additional generalisation for input and output of players, plays,
+  and matches (functions instead of streams); dunno if it'll come to
+  something good
+224
+  added some more ANSI control characters; they may be useful in the future
+223
+  ignoble hack to bypass gtk's command-line parsing
+222
+  put each svg definition in its own separate file
+221
+  somewhat generalised "display_svg_straight_2d()"
+220
+  ensured no gtk instruction is called from outside the main thread
+219
+  first working (albeit not interactive yet) gtkmm-based chess game
+218
+  added very preliminar pieces of code for a SVG-based GUI
+217
+  wrote some more links and a crazy idea
+216
+  corrected random seed for interactive
+215
+  recovered undo feature (dunno when i had lost it)
+214
+  checked "default_params_s"
+213
+  renamed computer players to "a" and "b"
+212
+  repaired difftests for alternative algorithms
+211
+  switched to a more serious exception philosophy
+210
+  checked for eof after conversion of a string to a value
+209
+  switched to, and corrected, evaluation selection by string name-and-params
+208
+  changed into the reference directory to run the reference test, lest it
+  doesn't find its shared libs
+207
+  corrected chess evaluator map, and added an evaluator map to draughts
+206
+  switched to command-line string-param-based algorithm params
+205
+  tested and corrected the params parser
+204
+  repackaged algorithm parameters, in preparation for fully string-based
+  specification
+203
+  renamed "material_and_centered" to "material_and_position" so the name
+  is the same as for draughts
+202
+  specifying a seed of 0 selects one from the random device
+201
+  added some initial structure to evaluation selection
+200
+  corrected saved reference executable, and generating the symbolic linked
+  from scratch
+199
+  sometimes the "ln" instruction failed, apparently because of parallelisation
+198
+  added "Monte Carlo Chess" thesis
+197
+  coded a constant zero-evaluation for Monte Carlo experiments
+196
+  used the random device for random seeding instead of time
+195
+  added makefile targets to save a binary version of "sxako" as a reference,
+  and compare current execution time with that saved reference
+194
+  extirpated verification of chess rules from "sxako" into new "chess_test"
+193
+  corrected a bug that showed when generating two tests simultaneously
+192
+  separated "StreamPlayer" and related code to new "human" module
+191
+  moved around some code to avoid duplication
+190
+  corrected unicode display style, and made some adjustments to the
+  "match_up()" function
+189
+  reorganised tests a lil bit, and added a "match_up()" function to carry out
+  a game with two players; not still the ring, but a step in that direction
+188
+  symbolic link to the "sxako" executable in the root dir
+187
+  made board traversal more symmetrical for white and black
+186
+  improved execution time by checking for _any_ legal move in the outcome
+  computation, rather than computing the list of _all_ legal moves and
+  checking if it's empty
+185
+  generalised displacement vs location, and hid even more things in the
+  ".cpp" files
+184
+  made colour and turn a general feature of games, and hid specific square
+  and piece definitions
+183
+  corrected non-zero-random differences between algorithms
+182
+  wrote some words about the configuration file
+181
+  corrected truncation of normal random number generation (wasn't working
+  for zero random deviation); something's wrong now (i dunno since when)
+  with the transposition table and whole tree algorithms for non-zero random
+180
+  new defaults, new reference match, with bold search
+179
+  coded interactive quit
+178
+  made maximum random factor configurable
+177
+  optimised with "-Ofast" rather than "-O3" for a marginal speed increase
+176
+  improved randomness (and used it in normal autotests) and final outcome
+  message
+175
+  corrected off-by-1 in draw by 50 uneventful moves
+174
+  improved "make success/..."
+173
+  enabled make in subdirs
+172
+  recovered the special tests
+171
+  coded two-step diff-test
+170
+  first shot at having a more complete makefile system (copied from Oxys);
+  solved some warnings detected by the new compilation flags
+169
+  coded undo functionality
+168
+  simplified move handling a little bit for chess
+167
+  implemented draw by (only one) repetition or 50 uneventful moves, for chess
+166
+  now, i think it's good; the capture move generation needed to actually
+  remove captured pieces, or it would enter an infinite loop; and the
+  evaluation was inversed, so it was playing suicide draughts
+165
+  some improvements for draughts, but still not there
+164
+  first shot at English draughts; i known there's already an error (it
+  doesn't enforce making only capturing moves if possible), but it's a start
+163
+  moved code around
+162
+  generalised "info_turn_last_move()"
+161
+  simplified the "parse_move()" function, and made it into a default
+  implementation available from "board"
+160
+  some more moving around of code in preparation for draughts, and a small
+  optimisation
+159
+  some more moving around of code in preparation for draughts
+158
+  some more taking some of the metaprogramming out of "straight"
+157
+  took some of the metaprogramming out of "straight", so it can be used
+  elsewhere
+156
+  removed leftover function
+155
+  minor improvement
+154
+  more comments and code rearrangements
+153
+  improved the makefile a lil bit, and took the "CXX" from environment
+  if available
+152
+  more comments
+151
+  removed obsoleted method
+150
+  separated invariant checking into computing cache and checking it, so
+  that the first part could also be used to reset the cache
+149
+  some code simplifications
+148
+  some more comments
+147
+  added some comments and made some minor code rearrangements
+146
+  added a new kind of grid for game management data
+145
+  made en-passant handling a little bit more robust (for future extensions
+  for other kinds of pawns)
+144
+  added an additional "emboldening" parameter to control bold searches
+143
+  enabled the growing bold score increment (i had disabled it by mistake)
+142
+  coded a highly experimental "boldness search", hopefully similar to
+  traditional quiescence searches, but rule-agnostic
+141
+  implemented randomness, with selectable standard deviation
+140
+  reorganised the todo file and added some links
+139
+  recognised that the recursion never reaches level 0
+138
+  improved execution time for pruning-and-transposition search by having
+  a special, simpler transposition table for level 0, that furthermore
+  survives search windows
+137
+  simplified ascii square representation
+136
+  moved the algorithm for displaying straight 2D boards to "display",
+  and rounded the corners of the ascii version
+135
+  made the fttb quicker "pruning" search the default
+134
+  coded a small utility for the usual case of having to reorder indices
+  when loading an array into a grid
+133
+  finished the Michniewski evaluation function, and tested it against the
+  evaluation that was already in place, both at level 4; this match is the
+  new autotest
+132
+  wrote all Michniewski tables; no evaluation function to use them yet
+131
+  added some notes and links
+130
+  renamed "assign()" to "assign_data()", and applied it to map-like
+  sources too
+129
+  added the possibility not to specify a trivial coordinate function in
+  "assign()", and added a check for cointainedness
+128
+  coded a utility to dump an array into a "Data"
+127
+  corrected a bug in computing the index for a straight addressing coordinate
+  that had gone unnoticed because i had been using only "Straight" or
+  "Straight2D" with equal dimensions; also simplified a little bit the data
+  that is kept for the index computation
+126
+  gave chess its own namespace, and renamed "sxakoreg" to "chess"
+125
+  separated thinking algorithm from specific rules
+124
+  added options to control the windowing for pruning, and used them to
+  optimise parameter values (i scanned values while minimising the number
+  of evaluations)
+123
+  reused "quick evaluations" (which are gonna remain the same as the
+  non-quick ones) for level 1: we already have the best move
+122
+  memoised "quick evaluations" for a 15% execution time improvement
+121
+  added some stats
+120
+  used "CLI11" for command-line options
+119
+  reorganised the code a lil bit
+118
+  put board display in the rules
+117
+  wrote documenting comments, and did some small changes
+116
+  corrected an assert for a check that couldn't be done
+115
+  rearranged code
+114
+  used specific rule move parsing, and removed "apply()" and "valid()"
+113
+  corrected a dependency on rules in "find_best_move()" (still to be
+  segregated completely from the chess rules module)
+112
+  made writing and parsing moves part of the rules (but didn't apply
+  parsing yet)
+111
+  put legal move generation in the rules specification
+110
+  made "Move" string-based rather than array-based; in exchange for the
+  added flexibility (we no longer have to choose a maximum length), there
+  was an 8% execution time penalty
+109
+  made last move part of the game rather than part of the board data
+108
+  some more metaprogramming for board data
+107
+  unified board state and cache access
+106
+  moved some code from "sxakoreg.h" to "sxakoreg.cpp"
+105
+  finished moving chess-specific types out of "board"
+104
+  now starting to move chess-specific types out of "board"
+103
+  finally moved "ChessData" to "sxakoreg"
+102
+  yet more segregation of rules from board
+101
+  more segregation of rules from board
+100
+  started real segregation of rules from board
+99
+  homogenised mentions of "ChessData" members
+98
+  treated all coordinate passing by reference-to-const
+97
+  removed yet more usages of "DataChess" from "board"
+96
+  corrections for debug version
+95
+  used board copying for slightly better performance
+94
+  removed some more usages of "DataChess" from "board"
+93
+  handled cached king location when setting, rather than when moving;
+  had to move piece definition to "board", but this is temporary, since
+  ultimately pieces, squares, and colours will go to an implementation file
+92
+  removed horizontal and vertical sizes from "Board", in favour of using
+  data from addressing objects
+91
+  measured execution time for appropriate targets
+90
+  started to code Michniewski simple evaluation function, which requires a
+  way to easily load tables; coded loading tables from maps, and a framework
+  to load from other containers (i still have to code loading from arrays)
+89
+  refactorisation to expose a common grid-based operation
+  ("first_non_empty()")
+88
+  separated linear addressing to its own straight addressing module, and
+  slightly modified the "contain()" syntax
+87
+  some cleanup
+86
+  extended grid managing with a kind-of-data specification, for compile-time
+  checking that we're not using for instance the cache when we mean to use
+  the state
+85
+  made shortcuts for linear indexing up to 4D
+84
+  used the default tuple-based coord type for board cells, rather than the
+  specific struct "Location"
+83
+  added enumerated coordinate ranges to "LinearIndexing" per dimensions,
+  and an enumeration of all possible coordinates
+82
+  added a state id generated directly from the data buffer
+81
+  some code simplifications
+80
+  put last pieces of state and cache into "ChessData"
+79
+  put en passant into "ChessData"
+78
+  added syntax sugar for empty coordinate types and automatic range tuple
+  construction
+77
+  put piece counts into "ChessData"
+76
+  simplified the meta-programming
+75
+  corrected an assert when displaying with unicode
+74
+  made relative index computation more optimisable with metaprogramming
+73
+  some cleanup
+72
+  added a FIXME with an opportunity for execution time improvement
+71
+  small edit
+70
+  improved grid access
+69
+  used the grid for the board squares; somewhat worse efficiency, but closer
+  to generality
+68
+  corrected name
+67
+  separated king regular moves from castling, so that different castling
+  rules (e.g. Chess960) can be coded easily
+66
+  initial implementation for the grid concept; not yet tested or used anywhere
+65
+  solved an initialisation-order fiasco
+64
+  small edit: unified best move with best score
+63
+  corrected transpositions (missing break, original alpha needed); verified
+  up to level 7; small gains at levels 3 and 4, improving up to 50% at
+  levels 7 and 8
+62
+  separated ANSI-code-based display to a different module
+61
+  sorta separated board from rules; still a lot to be reworked and reorganised
+60
+  checked for own king's check before inserting moves into the move list,
+  rather than having to remove checkful moves later
+59
+  passed the list of possible moves around to the move generator functions,
+  instead of having them return their contribution and stringing them together
+58
+  made conversions to square underlying type explicitly to that type rather
+  than mere "u8"
+57
+  removed unnecessary checks for occupiedness
+56
+  un-hardcoded board dimensions
+55
+  minuscule things
+54
+  made white and black pawns move according to their own square parameters,
+  instead of computing their colour first; turned the queen into a primary
+  piece, rather than a combination of rook and bishop; made the test match
+  be about two players of different levels
+53
+  reversed displacement application when checking for king under attack,
+  in case we use someday asymmetrical pieces
+52
+  generalised move insertion and move stream get
+51
+  moved from character-string-based instructions to "u8"-array-based for
+  a 75% execution time reduction
+50
+  more character-based instructions
+49
+  now's the time: i moved the evolution of pieces to each piece mover
+48
+  moved evolution of pieces (from initial to moved) to each piece mover;
+  it was giving bad execution times, but i suspect this came from the higher
+  volume of string-based instructions, so i partially switched string-based
+  to character-based
+47
+  switched to encoding squares as integers rather than pieces with strings,
+  and put in place the structure to switch to square-based rules (including
+  moved-vs-initial) rather than piece-based
+46
+  removed an unnecessary outcome evaluation from the regular evaluation
+  function, which sped things up a lot; now it pays off to have an aspiration
+  window, even for level 3
+45
+  coded aspiration windows; 0 windows by default (which is the same as no
+  aspiration windows), since it gives worse times for level=3; for level=4
+  times are better with 2 windows, an initial window of 2, and a window
+  factor of 2
+44
+  restructured to be able to keep track of past move evaluations in order
+  to implement aspiration windows
+43
+  ignored profiling executable
+42
+  added targets to check different algorithm optimisations, and to run
+  with valgrind
+41
+  coded transposition with pruning, but since it fails for level==5, i left
+  mere pruning as the default
+40
+  restructured "best_move()" to have an explicit case for level 0, which
+  raised the level number needed to get to a certain depth; also added some
+  commented-out code for the memoisation
+39
+  started a TODO file
+38
+  added "Board::id()" for future memoisation
+37
+  cleaned up some code, and used "u8" where possible
+36
+  checks for the square-to-piece table
+35
+  simplified square-to-piece conversion a bit
+34
+  oops, forgot to commit the test success file
+33
+  added forgotten shell specification
+32
+  renamed "square" to "Square" (now that the old "Square" is gone), and
+  switched to counting "Square" instances rather than coloured pieces,
+  as a step to removing "Piece"
+31
+  small enum adjustment
+30
+  small improvement to the enums
+29
+  now, a square is represented by a single enum; i still have to rework
+  the code to remove the legacy of the old "Square" class
+28
+  intermediate step towards having a square represented by a single enum
+27
+  target for timing
+26
+  new makefile targets for debugging and profiling
+25
+  cut execution time in half by streamlining some operations
+24
+  simplified en passant implementation
+23
+  added a test for all rules except draw
+22
+  small format changes in preparation for a test that tests all rules
+21
+  coded check rules, and correct game outcome
+20
+  coded pawn promotion, and tracking of king location for later coding of
+  check-related rules
+19
+  coded castling with all the rules, including checking for check
+18
+  small refactorings to improve readability and reduce copy-pastes
+17
+  some code cleanup
+16
+  corrected en passant capture
+15
+  quick-and-dirty conversion to string-based moves and move-generation-only
+  instead of move-generation and move-validation; en passant is wrong to
+  match previous behaviour
+14
+  added apparently missing checks for "just_check"; not very important,
+  since i'm gonna overhaul the move-vs-moves architecture
+13
+  scanned moves starting with the most promising, to increase pruning; now,
+  the test match is "won" by stalemate
+12
+  alpha-beta pruning
+11
+  coded a rudimentary interactive mode (run with "-i 3" for level-3 thinking)
+10
+  nuanced infinity, so that fast victories are favoured over delayed ones
+9
+  avoided full evaluation when we only want outcome
+8
+  counted pieces for time efficiency
+7
+  makefile
+6
+  coded a simple minimax algorithm with a simple evaluation function,
+  and optional unicode output
+5
+  implemented most movements for all the pieces
+4
+  wrote some evaluation basics
+3
+  small simplifications
+2
+  added more info to the board printout, and removed the unneeded
+  "Move::color"
+1
+  init; basic framework, pawn movement

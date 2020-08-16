@@ -1,0 +1,10 @@
+chess: -H -r chess -V material_and_position:.04
+chess960: -H -r chess960:126 -V material_and_position:.04
+chess_attack: -H -r chess_attack
+chess_attack-m: -H -r chess_attack -P method=m:l=10000 -p method=m:l=20000
+english_draughts: -H -r english_draughts -P l=3 -p l=7
+chess-r0: -H -r chess -V material_and_position:.04 -p rd=0 -P rd=0
+chess960-r0: -H -r chess960:126 -V material_and_position:.04 -p rd=0 -P rd=0
+chess_attack-r0: -H -r chess_attack -p rd=0 -P rd=0
+caissa_britannia: -H -r caissa_britannia -P bd=0 -p bd=1
+caissa_britannia-r0: -H -r caissa_britannia -P bd=0:rd=0 -p bd=1:rd=0

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10pt" height="10pt" viewBox="0 0 10 10" version="1.1">
+<g id="gray-d-king">
+<path style="fill-rule:nonzero;fill:rgb(50%,50%,50%);fill-opacity:1;stroke-width:0.49814;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 1.5 7 L 1.5 3 C 1.5 2.171875 3.066406 1.5 5 1.5 C 6.933594 1.5 8.5 2.171875 8.5 3 M 8.5 3 L 8.5 7 L 1.5 7 " transform="matrix(1,0,0,-1,0,10)"/>
+<path style="fill:none;stroke-width:0.49814;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 1.5 5 C 1.5 4.171875 3.066406 3.5 5 3.5 C 6.933594 3.5 8.5 4.171875 8.5 5 " transform="matrix(1,0,0,-1,0,10)"/>
+<path style="fill-rule:nonzero;fill:rgb(56.25%,50%,43.75%);fill-opacity:1;stroke-width:0.49814;stroke-linecap:round;stroke-linejoin:round;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 8.5 7 C 8.5 7.828125 6.933594 8.5 5 8.5 C 3.066406 8.5 1.5 7.828125 1.5 7 C 1.5 6.171875 3.066406 5.5 5 5.5 C 6.933594 5.5 8.5 6.171875 8.5 7 Z M 8.5 7 " transform="matrix(1,0,0,-1,0,10)"/>
+</g>
+</svg>

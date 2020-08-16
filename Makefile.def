@@ -1,0 +1,141 @@
+SHELL= /bin/bash
+.SECONDEXPANSION:
+
+.SUFFIXES:	# no old-fashioned suffix rules
+
+INCLUDEOPTS= -I .headers
+
+COMPILEOPTS= $(BASICOPTS) $(CODEOPTS) $(WARNINGOPTS) $(INCLUDEOPTS)
+
+LINKOPTS= $(COMPILEOPTS) $(LIBRARYOPTS) $(COMMONLIBRARIES)
+
+.PHONY: default_goal allobjects
+default_goal:	allobjects
+
+# directories declared in source_dirs
+SUBDIRS := $(shell cat source_dirs)
+
+ALLHEADERS := $(foreach dir,$(SUBDIRS),$(wildcard $(dir)/*.h))
+ALLSPE := $(foreach dir,$(SUBDIRS),$(wildcard $(dir)/Makefile.spe))
+ALLSOURCES := $(foreach dir,$(SUBDIRS),$(wildcard $(dir)/*.cpp))
+ALLDEPENDS := $(ALLSOURCES:%.cpp=$(DEPDIR)/%.d)
+
+VPATH := $(OBJDIR)
+
+ALLOBJECTS := $(foreach file,$(ALLHEADERS:.h=.o),$(OBJDIR)/$(file))
+
+-include .makefile.archives
+
+.makefile.archives:	source_dirs
+	@ for dir in $(SUBDIRS); do                                \
+	      echo -n $$dir' := ' ;                                \
+	      echo -n '$$(foreach file,$$(wildcard '$$dir'/*.h)' ; \
+	      echo ',$$(file:.h=.o))' ;                            \
+	      echo $$dir' $$(OBJDIR)/'$$dir'.so: $$('$$dir')' ;    \
+	      echo '$$(OBJDIR)/'$$dir'/* : '$$dir'/Makefile.spe' ; \
+	  done > $@
+
+EXECTEST := # otherwise, EXECTEST is recursively expanded
+OTHERTEST := # ditto
+-include $(ALLSPE)
+
+allobjects: 	$(ALLOBJECTS) ;
+
+ALLTESTS := $(foreach test,$(EXECTEST) $(OTHERTEST),$(OBJDIR)/$(test))
+
+test alltests: $(EXECTEST) $(OTHERTEST)
+
+.INTERMEDIATE:	%.d
+
+# the following ensures $(OBJDIR) exists
+-include $(OBJDIR)/.makefile.void
+./$(OBJDIR)/.makefile.void:
+	mkdir -p $(dir $@)
+	@ echo -n > $@
+
+$(OBJDIR)/%.o:	%.cpp
+	@ mkdir -p $(DEPDIR)/$(dir $<)
+	@ mkdir -p $(OBJDIR)/$(dir $<)
+	$(GPP) -Wp,-MMD,$(DEPDIR)/$*.d,-MP,-MT,$@ -c $(CFLAGS) $(COMPILEOPTS) \
+		$< -fPIC -o $@
+
+$(OBJDIR)/%.so:
+	$(GPP) $(CFLAGS) $(COMPILEOPTS) -shared \
+		$^ -o $@
+
+# the symbolic link allows for execution of the auto-test from its own
+# directory (useful for gdb from emacs)
+$(ALLTESTS): $(OBJDIR)/%: %.cpp $$(dir $$@).makefile.void
+	@ mkdir -p $(DEPDIR)/$(dir $<)
+	@ mkdir -p $(OBJDIR)/$(dir $<)
+	@ echo $^
+	$(GPP) -Wp,-MMD,$(DEPDIR)/$*.d,-MP,-MT,$@ $(CFLAGS) \
+		$< $(filter %.o %.so,$^) $(LINKOPTS) $(LDFLAGS) -o $@
+$(OBJDIR)/%/.makefile.void:
+	@ mkdir -p $(dir $@)
+	ln -s -f -n .. $(dir $@)$(OBJDIR)
+	@ echo -n >$@
+
+make/%:	$(OBJDIR)/% ;
+
+# you can 'make run/... TESTARGS="..."' in order to pass arguments to the test
+run/%:	$(OBJDIR)/%
+	$< $(TESTARGS)
+
+view/%:	$(OBJDIR)/%
+	$< $(TESTARGS) | less -R
+
+diff/%: $(OBJDIR)/%.output.last
+	diff -u $*.output.success $<
+
+# avoid "*.output.last" being deleted because they're intermediate:
+.SECONDARY: $(foreach test,$(EXECTEST),$(OBJDIR)/$(test).output.last)
+
+$(OBJDIR)/%.output.last: $(OBJDIR)/%
+	$< $(TESTARGS) > $@
+
+success/%: $(OBJDIR)/%.output.last
+	cp -i $< $*.output.success
+
+.PHONY: run/* view/* diff/* success/*
+
+make_test:	$(foreach test,$(EXECTEST),make/$(test)) ;
+run_test:	$(foreach test,$(EXECTEST),run/$(test)) ;
+view_test:	make_test
+	$(MAKE) run_test | less -R
+diff_test:	$(foreach test,$(EXECTEST),diff/$(test)) ;
+
+.PHONY:	make_test run_test view_test diff_test
+
+clean/%:
+	rm -rf $(OBJDIR)/$*
+	rm -rf $(DEPDIR)/$*
+
+clean::
+	rm -rf $(OBJDIR)
+	rm -rf $(DEPDIR)
+	rm -f */*.sco
+
+# test:	$(TEST) ;
+
+# mpatroltest:	$(TEST)
+# 	mpatrol --dynamic --show-unfreed -g --log-file mpatrol.log.presym \
+# 		$(TEST)
+# 	mpsym $(TEST) mpatrol.log.presym > mpatrol.log
+# 	rm -f mpatrol.log.presym
+
+# valgrindtest:	$(TEST)
+# 	valgrind --leak-check=yes --workaround-gcc296-bugs=yes --logfile-fd=9 \
+# 		$(TEST) 9> $(TEST).valgrind
+
+# .PHONY:	mpatroltest valgrindtest
+
+# .PHONY:	touch_all cleanbak clean rmprof
+
+# clean:
+# 	rm -f $(ALLDEPENDS) $(ALLOBJECTS)
+
+# rmprof:
+# 	rm -f bb.out gmon.out mpatrol.log
+
+-include $(ALLDEPENDS)

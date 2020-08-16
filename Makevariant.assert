@@ -1,0 +1,5 @@
+BASICOPTS := -Ofast # -finline-limit=550
+
+CODEOPTS +=
+
+LIBRARYOPTS :=

@@ -1,0 +1,82 @@
+TEST= general/chess_test general/sxako general/basic_test
+
+EXECTEST+= $(TEST)
+
+$(foreach test,$(TEST),$(OBJDIR)/$(test)): general.so
+
+diff_test.all: diff_test \
+	diff/general/sxako.whole_tree \
+	diff/general/sxako.pruning \
+	diff/general/sxako.transposition
+
+diff/general/sxako.%: $(OBJDIR)/general/sxako.%.output.last
+	diff -u general/sxako.output.success $<
+
+$(OBJDIR)/%.pruning.output.last: $(OBJDIR)/%
+	$< -P "method=p" -p "method=p" $(TESTARGS) > $@
+
+$(OBJDIR)/%.transposition.output.last: $(OBJDIR)/%
+	$< -P "method=t" -p "method=t"  $(TESTARGS) > $@
+
+$(OBJDIR)/%.whole_tree.output.last: $(OBJDIR)/%
+	$< -P "method=w" -p "method=w" $(TESTARGS) > $@
+
+time_test: $(OBJDIR)/general/sxako
+	time ./$< $(TESTARGS) >/dev/null
+
+time_test.whole_tree: $(OBJDIR)/general/sxako
+	time ./$< -P "method=w" -p "method=w" $(TESTARGS) >/dev/null
+
+time_test.pruning: $(OBJDIR)/general/sxako
+	time ./$< -P "method=p" -p "method=p" $(TESTARGS) >/dev/null
+
+time_test.transposition: $(OBJDIR)/general/sxako
+	time ./$< -P "method=t" -p "method=t" $(TESTARGS) >/dev/null
+
+time_test.all: time_test \
+	time_test.whole_tree time_test.pruning time_test.transposition
+
+REFDIR := .object.ref
+
+clean::
+	rm -rf $(REFDIR)
+
+save_ref: $(OBJDIR)/general/sxako
+	rm -rf $(REFDIR)
+	cp -r $(OBJDIR) $(REFDIR)
+
+time_test.ref: $(OBJDIR)/general/sxako
+	(                                                 \
+	  echo;                                           \
+	  for i in $$(seq 1 3); do                        \
+	      for s in $< $(REFDIR)/general/sxako; do (   \
+                  cd $${s%/*};                            \
+	          echo $$s:;                              \
+		  ( time ./$${s##*/} >/dev/null)          \
+	              |& sed '/^$$/d;s/^/  /';            \
+	          echo;                                   \
+	      ) done;                                     \
+	  done                                            \
+        )
+
+GAMETEST=$(shell sed 's/:.*//' general/test_list)
+.SECONDARY: \
+    $(foreach test,$(GAMETEST),$(OBJDIR)/general/test_game_$(test).output.last)
+
+diff_game: $(foreach test,$(GAMETEST),diff_game/$(test))
+
+diff_game/%: $(OBJDIR)/general/test_game_%.output.last
+	@echo $*:
+	diff -u test_game/$*.output.success $<
+
+success_game/%: $(OBJDIR)/general/test_game_%.output.last
+	cp -i $< test_game/$*.output.success
+
+run_game/%: general/test_list $(OBJDIR)/general/sxako
+	$(OBJDIR)/general/sxako $$(sed -n 's/^$*: //p' $<)
+
+run_game-u/%: general/test_list $(OBJDIR)/general/sxako
+	$(OBJDIR)/general/sxako -u $$(sed -n 's/^$*: //p' $<)
+
+$(OBJDIR)/general/test_game_%.output.last: general/test_list $(OBJDIR)/general/sxako
+	$(OBJDIR)/general/sxako $$(sed -n 's/^$*: //p' $<) > $@

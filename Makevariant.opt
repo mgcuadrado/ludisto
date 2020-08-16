@@ -1,0 +1,7 @@
+include $(SRCDIR)/Makevariant.assert
+
+BASICOPTS += -DNDEBUG -ggdb3
+
+CODEOPTS +=
+
+LIBRARYOPTS :=
